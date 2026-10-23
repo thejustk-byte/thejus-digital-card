@@ -27,6 +27,52 @@ h1{font-size:clamp(25px,6vw,34px);letter-spacing:-.065em;line-height:1.05;margin
 @media(min-width:560px){.wrap{width:min(100% - 40px,640px)}.bubble-grid{gap:22px}.bubble{border-radius:50%;max-width:155px;justify-self:center;width:100%}.hero{padding-top:8px}.orbit-scene{width:84px}}
 @media(max-width:380px){.wrap{width:calc(100% - 20px)}.topline{font-size:7px}.hero{padding:6px 0 10px}.orbit-scene{width:65px;margin-bottom:6px}.bubble-grid{gap:8px;padding-top:8px}.bubble{padding:6px 2px;gap:5px}.bubble-icon{width:clamp(38px,11vw,45px);height:clamp(38px,11vw,45px);font-size:18px}.bubble-icon svg{width:21px;height:21px}.bubble strong{font-size:9px}.bubble small{font-size:7px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Reference-inspired cinematic orb + recorder capsule */
+:root{--laser:#ff334f;--laser-soft:rgba(255,42,72,.38)}
+body{background:#030304}
+body:before{background:radial-gradient(ellipse at 50% 48%,rgba(38,38,44,.36),transparent 34%),radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.045),transparent 35%);opacity:.95}
+.bg-video{opacity:.07;filter:grayscale(1) brightness(.55) contrast(1.2)}
+.wrap{position:relative;z-index:1}
+.topline{opacity:.7}
+.hero{padding-top:14px}
+.orbit-scene{width:clamp(104px,31vw,142px);margin-bottom:17px;filter:drop-shadow(0 20px 48px rgba(255,255,255,.055))}
+.ring{border-color:rgba(255,255,255,.11)}
+.ring.r2{border-color:rgba(255,255,255,.065)}
+.core{width:78%;background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(255,255,255,.12) 24%,rgba(255,255,255,.04) 70%,rgba(255,255,255,.48));box-shadow:0 0 42px rgba(255,255,255,.075),inset 0 0 18px rgba(255,255,255,.18);animation:orbPulse 5s ease-in-out infinite}
+.core-inner{background:#09090b;border-color:rgba(255,255,255,.11)}
+.orbit-scene:after{content:"";position:absolute;inset:13% 5% -26%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.11),transparent 68%);filter:blur(14px);z-index:-1;pointer-events:none}
+@keyframes orbPulse{0%,100%{transform:scale(1);filter:brightness(.94)}50%{transform:scale(1.035);filter:brightness(1.18)}}
+h1{letter-spacing:.13em;font-size:clamp(23px,6vw,32px);font-weight:500}
+.subtitle{color:#c5c5cc}
+.tagline{letter-spacing:.16em;color:#777780;font-size:8px}
+.bubble-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;max-width:390px;margin:20px auto 0;padding:0 12px 20px}
+.bubble{aspect-ratio:auto;width:100%;min-height:86px;border-radius:999px;padding:11px 22px;display:grid;grid-template-columns:56px minmax(0,1fr);grid-template-rows:auto auto;column-gap:15px;row-gap:3px;justify-content:start;justify-items:start;text-align:left;animation:none;overflow:hidden;background:linear-gradient(105deg,rgba(255,255,255,.105),rgba(255,255,255,.025) 45%,rgba(255,255,255,.07));border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 2px rgba(255,255,255,.16),inset 0 -12px 28px rgba(0,0,0,.35),0 12px 32px rgba(0,0,0,.28);backdrop-filter:blur(34px) saturate(125%);-webkit-backdrop-filter:blur(34px) saturate(125%);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.bubble:before{inset:-80% -120%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.13) 50%,transparent 60%);animation:sheen 10s linear infinite}
+.bubble:after{background:linear-gradient(100deg,rgba(255,255,255,.06),transparent 52%,rgba(255,51,79,.055));opacity:.75}
+.bubble:first-child{min-height:100px}
+.bubble-icon{grid-column:1;grid-row:1 / span 2;width:54px;height:54px;align-self:center;background:radial-gradient(circle at 32% 20%,rgba(255,255,255,.19),rgba(255,255,255,.025) 72%);border-color:rgba(255,255,255,.18);box-shadow:inset 0 2px 4px rgba(255,255,255,.17),0 8px 22px rgba(0,0,0,.3);font-size:21px}
+.bubble-icon svg{width:23px;height:23px}
+.bubble strong{grid-column:2;grid-row:1;align-self:end;font-size:14px;font-weight:650;letter-spacing:.005em}
+.bubble small{grid-column:2;grid-row:2;align-self:start;font-size:10px;color:#a9a9b2;letter-spacing:.02em}
+.bubble:hover,.bubble:focus-visible{transform:scale(1.025);border-color:rgba(255,255,255,.3);box-shadow:inset 0 1px 2px rgba(255,255,255,.2),0 16px 36px rgba(0,0,0,.38),0 0 22px rgba(255,255,255,.035)}
+.bubble:active{transform:scale(.975)}
+.bubble:first-child .bubble-icon{box-shadow:0 0 0 1px rgba(255,255,255,.08),inset 0 1px 4px rgba(255,255,255,.22),0 0 28px rgba(255,255,255,.065)}
+/* Signature voice-recorder-inspired interactive capsule */
+.bubble[data-bubble="share"]{grid-template-columns:58px minmax(0,1fr) 28px;position:relative;border-color:rgba(255,255,255,.2);background:linear-gradient(100deg,rgba(255,255,255,.13),rgba(255,255,255,.035) 50%,rgba(255,255,255,.08));}
+.bubble[data-bubble="share"] .bubble-icon{grid-column:1;grid-row:1 / span 2}
+.bubble[data-bubble="share"] strong{grid-column:2;grid-row:1}
+.bubble[data-bubble="share"] small{grid-column:2;grid-row:2}
+.bubble[data-bubble="share"]:after{content:"";inset:50% 19px auto auto;width:8px;height:8px;border-radius:50%;background:var(--laser);box-shadow:0 0 10px var(--laser),0 0 28px var(--laser-soft);opacity:1;transform:translateY(-50%);z-index:2}
+.bubble[data-bubble="share"] .bubble-icon{position:relative}
+.bubble[data-bubble="share"] .bubble-icon:after{content:"";position:absolute;inset:-5px;border:1px solid rgba(255,51,79,.0);border-radius:50%;transition:border-color .25s,box-shadow .25s}
+.bubble[data-bubble="share"]:hover .bubble-icon:after{border-color:rgba(255,51,79,.6);box-shadow:0 0 20px rgba(255,51,79,.17)}
+.footer{color:#606068;letter-spacing:.17em;margin-top:4px}
+.expand-card{background:linear-gradient(150deg,rgba(35,35,40,.97),rgba(5,5,7,.98));border-color:rgba(255,255,255,.18)}
+.action{background:linear-gradient(110deg,rgba(255,255,255,.105),rgba(255,255,255,.025))}
+@media(min-width:560px){.wrap{width:min(100% - 40px,640px)}.bubble-grid{grid-template-columns:minmax(0,1fr);max-width:390px;gap:12px}.bubble{max-width:none;width:100%;border-radius:999px}.hero{padding-top:14px}.orbit-scene{width:142px}}
+@media(max-width:380px){.wrap{width:calc(100% - 24px)}.topline{font-size:7px}.hero{padding:8px 0 6px}.orbit-scene{width:104px;margin-bottom:14px}.bubble-grid{grid-template-columns:minmax(0,1fr);gap:9px;padding:0 3px 15px;margin-top:15px}.bubble{min-height:76px;padding:9px 17px;grid-template-columns:49px minmax(0,1fr);column-gap:12px}.bubble:first-child{min-height:84px}.bubble-icon{width:47px;height:47px}.bubble-icon svg{width:21px;height:21px}.bubble strong{font-size:13px}.bubble small{font-size:9px}.bubble[data-bubble="share"]{grid-template-columns:50px minmax(0,1fr) 20px}}
+
 </style>
 </head>
 <body>

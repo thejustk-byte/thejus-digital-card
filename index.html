@@ -1,141 +1,91 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#09090b">
-<meta name="description" content="Thejus T.K. — a digital contact card.">
-<meta property="og:title" content="Thejus T.K. | Digital Card">
-<meta property="og:description" content="A digital contact card by Thejus T.K.">
-<meta property="og:type" content="website">
-<title>Thejus T.K. — Digital Card</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09090b"><meta name="description" content="Thejus T.K. — a digital contact card.">
+<meta property="og:title" content="Thejus T.K. | Digital Card"><meta property="og:description" content="Connect with Thejus T.K.">
+<title>Thejus T.K. — Digital Card</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
-:root{color-scheme:dark;--bg:#08080a;--line:rgba(255,255,255,.15);--muted:#a4a4ae;--text:#fafafd;--cyan:#a7e6ff;--blue:#9ba9ff;--pink:#efa8ff;--mint:#a3f3d3}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif}
-body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,rgba(255,255,255,.075),transparent 34%),radial-gradient(ellipse at 12% 65%,rgba(91,135,255,.11),transparent 38%),radial-gradient(ellipse at 88% 70%,rgba(221,106,255,.09),transparent 40%),linear-gradient(180deg,rgba(5,5,8,.18),rgba(5,5,8,.88))}
-.bg-video{position:fixed;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.06)}
-#app{position:relative;z-index:1;width:100%;height:100%;min-height:100svh;perspective:1600px;overflow:hidden}
-.glass{background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.035) 48%,rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:inset 0 1px 1px rgba(255,255,255,.25),inset 0 -1px 1px rgba(0,0,0,.28),0 12px 34px rgba(0,0,0,.24)}
-.landing{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .4s,transform .6s;transform-origin:left center}
-.landing.leave{opacity:0;transform:rotateY(-22deg) translateX(-10%);pointer-events:none}
-.orbit-scene{position:relative;width:min(88vw,410px);aspect-ratio:1;display:grid;place-items:center;isolation:isolate;animation:appear .9s both}
-@keyframes appear{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
-@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinback{to{transform:rotate(-360deg)}}@keyframes pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.045);filter:brightness(1.14)}}@keyframes sheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.ring{position:absolute;inset:2%;border-radius:50%;border:1px solid rgba(255,255,255,.14);animation:spin 32s linear infinite}
-.ring:before,.ring:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 15px rgba(167,230,255,.9)}.ring:before{top:10%;left:23%}.ring:after{right:12%;bottom:19%;background:var(--pink)}
-.ring.r2{inset:13%;border-style:dashed;border-color:rgba(255,255,255,.13);animation:spinback 42s linear infinite}.ring.r3{inset:25%;border-color:rgba(255,255,255,.1);animation:spin 52s linear infinite}
-.core{position:relative;width:34%;aspect-ratio:1;border-radius:50%;padding:3px;background:conic-gradient(var(--cyan),rgba(255,255,255,.14),var(--pink),var(--blue),var(--mint),var(--cyan));box-shadow:0 0 65px rgba(158,174,255,.22);animation:pulse 5s ease-in-out infinite}
-.core-inner{height:100%;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 20%,#45454b,#19191d 58%,#08080a);border:3px solid rgba(12,12,15,.95);font-size:clamp(30px,8vw,48px);font-weight:800;letter-spacing:-.09em}
-.orbit-nav{position:absolute;inset:0;list-style:none;padding:0;margin:0;animation:spinback 32s linear infinite}
-.orbit-nav li{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;transform:rotate(var(--a)) translateY(calc(min(44vw,181px) * -1)) rotate(calc(var(--a) * -1));}
-.orbit-nav li:nth-child(1){--a:0deg}.orbit-nav li:nth-child(2){--a:60deg}.orbit-nav li:nth-child(3){--a:120deg}.orbit-nav li:nth-child(4){--a:180deg}.orbit-nav li:nth-child(5){--a:240deg}.orbit-nav li:nth-child(6){--a:300deg}
-.orbit-nav button{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#f9f9ff;font-size:21px;cursor:pointer;transition:transform .25s,border-color .25s,background .25s;animation:spin 32s linear infinite}
-.orbit-nav button:hover,.orbit-nav button:focus-visible{transform:scale(1.12);border-color:rgba(255,255,255,.65);outline:none;background:linear-gradient(145deg,rgba(167,230,255,.23),rgba(239,168,255,.16))}
-.orbit-nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.hint{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:rgba(255,255,255,.35);font:9px "DM Mono",monospace;letter-spacing:.24em;user-select:none}
-.page{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));opacity:0;pointer-events:none;transform:rotateY(90deg);transform-origin:left center;backface-visibility:hidden;transition:transform .65s cubic-bezier(.2,.72,.18,1),opacity .35s;background:linear-gradient(145deg,rgba(14,14,17,.82),rgba(8,8,10,.75));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
-.page.active{opacity:1;pointer-events:auto;transform:rotateY(0deg)}.page.exit{transform:rotateY(-90deg);opacity:0;transform-origin:right center}
-.page-inner{width:min(100%,540px);margin:0 auto;min-height:100%;display:flex;flex-direction:column}
-.page-head{display:flex;align-items:center;gap:13px;margin-bottom:28px}
-.back{width:45px;height:45px;flex:0 0 auto;border-radius:50%;color:#fff;display:grid;place-items:center;cursor:pointer;font-size:22px}
-.back svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
-.kicker{font:10px "DM Mono",monospace;letter-spacing:.2em;color:#c5c5d0;text-transform:uppercase}.page h1{font-size:clamp(34px,8vw,52px);line-height:1.04;letter-spacing:-.065em;margin:8px 0 10px}.lead{font-size:13px;line-height:1.8;color:#c3c3ce;margin:0 0 20px}
-.avatar-small{width:76px;height:76px;border-radius:50%;padding:2px;background:conic-gradient(var(--cyan),var(--pink),var(--blue),var(--mint),var(--cyan));margin:0 0 20px}.avatar-small span{height:100%;border-radius:50%;display:grid;place-items:center;background:#17171b;font-weight:800;font-size:25px}
-.btn{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 16px;border-radius:999px;color:var(--text);font-size:12px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .22s,border-color .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent}
-.btn:before{content:"";position:absolute;z-index:-1;inset:-100% -50%;opacity:.45;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.2) 48%,transparent 60%);background-size:200% 100%;animation:sheen 9s linear infinite;pointer-events:none}
-.btn:after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;background:linear-gradient(110deg,rgba(102,229,255,.2),rgba(237,155,255,.22),rgba(154,244,208,.18));transition:opacity .22s;z-index:-1}
-.btn:hover,.btn:focus-visible{transform:translateY(-2px);border-color:rgba(255,255,255,.55);outline:none}.btn:hover:after,.btn:focus-visible:after,.btn:active:after{opacity:1}.btn:active{transform:scale(.975)}
-.btn.primary{background:linear-gradient(140deg,rgba(255,255,255,.28),rgba(255,255,255,.07) 52%,rgba(255,255,255,.16));border-color:rgba(255,255,255,.38)}
-.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.btn-row .btn{min-width:0}
-.tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.tile{min-height:100px;border-radius:22px;padding:17px;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);transition:transform .22s,border-color .22s;-webkit-tap-highlight-color:transparent}
-.tile:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.42)}.tile-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);font-size:18px;flex:0 0 auto}.tile strong{display:block;font-size:12px}.tile small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.5}
-.list{display:grid;gap:10px}.list .btn{justify-content:flex-start;padding-left:19px}.list .btn span:last-child{margin-left:auto;color:#b9b9c5}
-.footer{margin-top:auto;padding-top:32px;text-align:center;color:#777782;font:9px "DM Mono",monospace;letter-spacing:.08em;line-height:1.8}
-.toast{position:fixed;z-index:10;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:linear-gradient(135deg,#fafafa,#c5cada);color:#101014;padding:12px 17px;border-radius:999px;font-size:12px;font-weight:800;transition:.25s;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:380px){.orbit-scene{width:91vw}.orbit-nav li{width:48px;height:48px;margin:-24px;transform:rotate(var(--a)) translateY(calc(45vw * -1)) rotate(calc(var(--a) * -1))}.orbit-nav button{width:48px;height:48px}.page{padding-left:16px;padding-right:16px}.tile{padding:13px;gap:9px}.tile-icon{width:32px;height:32px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+:root{color-scheme:dark;--bg:#08080a;--text:#f9f9fc;--muted:#b3b3bd;--cyan:#b8efff;--pink:#f1b5ff;--blue:#a9b6ff;--mint:#b0f5d9}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 10%,rgba(255,255,255,.1),transparent 38%),radial-gradient(ellipse at 12% 65%,rgba(91,135,255,.14),transparent 38%),radial-gradient(ellipse at 88% 72%,rgba(221,106,255,.1),transparent 40%),linear-gradient(180deg,rgba(5,5,8,.3),rgba(5,5,8,.9))}
+.bg-video{position:fixed;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.05)}
+.wrap{width:min(100% - 30px,700px);margin:0 auto;padding:calc(22px + env(safe-area-inset-top)) 0 calc(30px + env(safe-area-inset-bottom))}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#c4c4ce;font:9px "DM Mono",monospace;letter-spacing:.14em;text-transform:uppercase}.status{display:flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
+.hero{text-align:center;padding:26px 0 16px}.orbit-scene{position:relative;width:min(64vw,250px);aspect-ratio:1;margin:0 auto 19px;display:grid;place-items:center}
+.ring{position:absolute;inset:3%;border-radius:50%;border:1px solid rgba(255,255,255,.14);animation:spin 32s linear infinite}.ring:before,.ring:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 15px rgba(167,230,255,.9)}.ring:before{top:10%;left:23%}.ring:after{right:12%;bottom:19%;background:var(--pink)}
+.ring.r2{inset:15%;border-style:dashed;border-color:rgba(255,255,255,.12);animation:spinback 42s linear infinite}.ring.r3{inset:29%;border-color:rgba(255,255,255,.1);animation:spin 52s linear infinite}
+.core{width:39%;aspect-ratio:1;border-radius:50%;padding:3px;background:conic-gradient(var(--cyan),rgba(255,255,255,.14),var(--pink),var(--blue),var(--mint),var(--cyan));box-shadow:0 0 55px rgba(158,174,255,.23);animation:breathe 5s ease-in-out infinite}.core-inner{height:100%;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 20%,#45454b,#19191d 58%,#08080a);border:3px solid rgba(12,12,15,.95);font-size:clamp(28px,7vw,40px);font-weight:800;letter-spacing:-.09em}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinback{to{transform:rotate(-360deg)}}@keyframes breathe{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.045);filter:brightness(1.14)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes sheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+h1{font-size:clamp(30px,7vw,43px);letter-spacing:-.065em;line-height:1.04;margin:0 0 9px}.subtitle{color:#d0d0d8;font-size:13px;line-height:1.7;margin:0}.tagline{font:9px "DM Mono",monospace;letter-spacing:.07em;color:#a8a8b3;line-height:1.8;margin:11px 0 0}
+.bubble-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:14px 2px 8px}
+.bubble{position:relative;isolation:isolate;overflow:hidden;min-height:145px;border-radius:30px;padding:17px 14px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:var(--text);cursor:pointer;border:1px solid rgba(255,255,255,.22);background:radial-gradient(circle at 25% 15%,rgba(255,255,255,.23),transparent 38%),linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.035) 55%,rgba(255,255,255,.09));backdrop-filter:blur(24px) saturate(165%);-webkit-backdrop-filter:blur(24px) saturate(165%);box-shadow:inset 0 2px 3px rgba(255,255,255,.22),inset 0 -8px 18px rgba(0,0,0,.18),0 12px 28px rgba(0,0,0,.22);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent;animation:float 5.5s ease-in-out infinite}
+.bubble:nth-child(2n){animation-delay:-2.1s}.bubble:nth-child(3n){animation-delay:-3.5s}
+.bubble:before{content:"";position:absolute;inset:-100% -60%;z-index:-1;opacity:.5;background:linear-gradient(105deg,transparent 37%,rgba(255,255,255,.23) 49%,transparent 60%);background-size:200% 100%;animation:sheen 8s linear infinite;pointer-events:none}
+.bubble:after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(140deg,rgba(167,230,255,.15),transparent 45%,rgba(241,181,255,.16));opacity:.45;transition:opacity .25s}
+.bubble:hover,.bubble:focus-visible{transform:translateY(-5px) scale(1.025);border-color:rgba(255,255,255,.48);box-shadow:inset 0 2px 3px rgba(255,255,255,.3),0 18px 38px rgba(0,0,0,.3),0 0 25px rgba(167,230,255,.1);outline:none}.bubble:active{transform:scale(.96)}.bubble:hover:after{opacity:.95}
+.bubble-icon{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.27),rgba(255,255,255,.045) 65%);border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 2px 4px rgba(255,255,255,.19),0 8px 18px rgba(0,0,0,.17);font-size:27px;flex:0 0 auto}
+.bubble-icon svg{width:29px;height:29px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bubble strong{font-size:13px;font-weight:700;letter-spacing:-.01em}.bubble small{font-size:10px;color:#c4c4cf;line-height:1.4}
+.glass{background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:inset 0 1px 2px rgba(255,255,255,.2),0 10px 25px rgba(0,0,0,.18)}
+.expanded{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom));background:rgba(0,0,0,.52);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .25s}
+.expanded.open{opacity:1;pointer-events:auto}.expand-card{position:relative;width:min(100%,470px);max-height:88svh;overflow:auto;border-radius:34px;padding:25px 21px 24px;background:linear-gradient(150deg,rgba(42,42,48,.94),rgba(14,14,18,.94));border:1px solid rgba(255,255,255,.27);box-shadow:inset 0 1px 2px rgba(255,255,255,.22),0 30px 90px rgba(0,0,0,.55);transform:scale(.78);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.expanded.open .expand-card{transform:scale(1)}.expand-head{display:flex;align-items:center;gap:14px;margin:0 0 20px}.expand-icon{width:62px;height:62px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-size:27px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.28),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 2px 4px rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.2)}.expand-icon svg{width:29px;height:29px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.expand-head h2{font-size:25px;letter-spacing:-.05em;margin:0}.expand-head p{font-size:11px;color:var(--muted);margin:5px 0 0}.close{margin-left:auto;width:40px;height:40px;flex:0 0 auto;border-radius:50%;color:#fff;font-size:24px;cursor:pointer}
+.content-list{display:grid;gap:10px}.action{display:flex;align-items:center;gap:12px;min-height:56px;border-radius:19px;padding:12px 15px;color:#f9f9fc;text-decoration:none;font-size:12px;font-weight:650;cursor:pointer;text-align:left;width:100%}.action .act-icon{font-size:19px;width:28px;text-align:center}.action .arrow{margin-left:auto;color:#bfc0cc;font-size:17px}.action:hover{border-color:rgba(255,255,255,.42);background:linear-gradient(120deg,rgba(167,230,255,.13),rgba(241,181,255,.1))}
+.qr-wrap{text-align:center;margin-top:18px}.qr-wrap #qrcode{display:inline-block;background:white;padding:12px;border-radius:14px}.qr-wrap p{color:var(--muted);font-size:11px}
+.footer{text-align:center;color:#777782;font:9px "DM Mono",monospace;letter-spacing:.1em;line-height:1.8;padding:20px 0 5px}
+.toast{position:fixed;z-index:30;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:linear-gradient(135deg,#fafafa,#c5cada);color:#101014;padding:12px 17px;border-radius:999px;font-size:12px;font-weight:800;transition:.25s;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:560px){.bubble-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.bubble{min-height:150px}.hero{padding-top:20px}.orbit-scene{width:210px}}
+@media(max-width:380px){.wrap{width:calc(100% - 22px)}.orbit-scene{width:56vw;max-width:195px;margin-bottom:15px}.hero{padding-top:18px}.bubble-grid{gap:10px}.bubble{min-height:132px;border-radius:26px;padding:13px 10px}.bubble-icon{width:58px;height:58px;font-size:24px}.bubble strong{font-size:12px}.bubble small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <video class="bg-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80" aria-hidden="true"><source src="background.mp4" type="video/mp4"></video>
-<div id="app">
-  <main class="landing" id="landing" aria-label="Contact navigation">
-    <div class="orbit-scene">
-      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
-      <div class="core"><div class="core-inner">TK.</div></div>
-      <ul class="orbit-nav" aria-label="Open a page">
-        <li><button class="glass" data-page="contact" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button></li>
-        <li><button class="glass" data-page="social" aria-label="Social links" title="Social links"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></button></li>
-        <li><button class="glass" data-page="portfolio" aria-label="Portfolio" title="Portfolio"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></button></li>
-        <li><button class="glass" data-page="interests" aria-label="Interests" title="Interests">✦</button></li>
-        <li><button class="glass" data-page="share" aria-label="Share card" title="Share card"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 9.4 6.6 2.6"/></svg></button></li>
-        <li><button class="glass" data-page="contact" aria-label="Save contact" title="Save contact"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M19 8v6m-3-3h6"/></svg></button></li>
-      </ul>
-    </div>
-    <div class="hint" aria-hidden="true"></div>
-  </main>
-
-  <section class="page" id="page-contact" data-view="contact" aria-label="Contact page">
-    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Personal digital card</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Direct contact</div></div></div>
-      <div class="avatar-small"><span>TK.</span></div><div class="kicker">Thejus T.K.</div><h1>Let's connect.</h1><p class="lead">Professional by craft. Curious by nature.</p>
-      <div class="list"><a class="btn glass primary" href="thejus-tk.vcf" download>＋ &nbsp; Save my contact <span>↓</span></a><a class="btn glass" href="https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card." target="_blank" rel="noopener noreferrer">◉ &nbsp; WhatsApp <span>↗</span></a><a class="btn glass" href="mailto:thejus.tk@gmail.com">✉ &nbsp; Email me <span>↗</span></a><a class="btn glass" href="tel:+919611638650">⌕ &nbsp; Call me <span>↗</span></a></div>
-      <div class="footer">MADE TO CONNECT · DESIGNED FOR MOBILE</div>
-    </div>
+<main class="wrap">
+  <div class="topline"><span>THEJUS T.K. · DIGITAL CARD</span><span class="status"><span class="dot"></span> AVAILABLE TO CONNECT</span></div>
+  <header class="hero">
+    <div class="orbit-scene" aria-label="Animated TK emblem"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"><div class="core-inner">TK.</div></div></div>
+    <h1>THEJUS T.K.</h1><p class="subtitle">Professional by craft. Curious by nature.</p><p class="tagline">OPERATIONS · LEADERSHIP · PROCESS IMPROVEMENT · AUTOMATION</p>
+  </header>
+  <section class="bubble-grid" aria-label="Contact and profile shortcuts">
+    <button class="bubble" data-bubble="contact"><span class="bubble-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><strong>Contact</strong><small>Save · Call · Message</small></button>
+    <button class="bubble" data-bubble="social"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><strong>Social</strong><small>LinkedIn · Instagram</small></button>
+    <button class="bubble" data-bubble="portfolio"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span><strong>Portfolio</strong><small>Work · Projects</small></button>
+    <button class="bubble" data-bubble="interests"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 2.8 14.7 9l6.5.5-4.9 4.3 1.5 6.3-5.6-3.4-5.6 3.4 1.5-6.3-4.9-4.3L9.7 9 12 2.8Z"/></svg></span><strong>Interests</strong><small>Mountains · Cars · Music</small></button>
+    <button class="bubble" data-bubble="share"><span class="bubble-icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 9.4 6.6 2.6"/></svg></span><strong>Share</strong><small>Link · QR code</small></button>
+    <button class="bubble" data-bubble="github"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.7 1.4a12.8 12.8 0 0 0-6.8 0C6.7 1.1 5.5 1.5 5.5 1.5a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4 8.7c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22"/></svg></span><strong>GitHub</strong><small>Code · Experiments</small></button>
   </section>
-
-  <section class="page" id="page-social" data-view="social" aria-label="Social links page">
-    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Find me online</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Social & professional</div></div></div>
-      <h1>My spaces.</h1><p class="lead">A few places to follow the journey.</p>
-      <div class="tile-grid"><a class="tile glass" href="https://www.linkedin.com/in/thejus-tk-34966795?originalSubdomain=in" target="_blank" rel="noopener noreferrer"><span class="tile-icon">in</span><span><strong>LinkedIn</strong><small>Professional profile</small></span></a><a class="tile glass" href="https://www.instagram.com/inexplicable_psyche/" target="_blank" rel="noopener noreferrer"><span class="tile-icon">◎</span><span><strong>Instagram</strong><small>Life beyond work</small></span></a><a class="tile glass" href="https://thejustk-byte.github.io" target="_blank" rel="noopener noreferrer"><span class="tile-icon">⌘</span><span><strong>Portfolio</strong><small>Work & projects</small></span></a><a class="tile glass" href="mailto:thejus.tk@gmail.com"><span class="tile-icon">✉</span><span><strong>Email</strong><small>Start a conversation</small></span></a></div>
-      <div class="footer">ONE PERSON · MANY CURIOSITIES</div>
-    </div>
-  </section>
-
-  <section class="page" id="page-portfolio" data-view="portfolio" aria-label="Portfolio page">
-    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Work & projects</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Explore my digital space</div></div></div>
-      <h1>Built with curiosity.</h1><p class="lead">Operations, process improvement, automation and experiments at the intersection of work and technology.</p>
-      <div class="list"><a class="btn glass primary" href="https://thejustk-byte.github.io" target="_blank" rel="noopener noreferrer">⌘ &nbsp; Open portfolio <span>↗</span></a><a class="btn glass" href="https://github.com/thejustk-byte" target="_blank" rel="noopener noreferrer">◈ &nbsp; GitHub projects <span>↗</span></a><a class="btn glass" href="https://www.linkedin.com/in/thejus-tk-34966795" target="_blank" rel="noopener noreferrer">in &nbsp; Professional profile <span>↗</span></a></div>
-      <div class="footer">PROCESS · PEOPLE · POSSIBILITY</div>
-    </div>
-  </section>
-
-  <section class="page" id="page-interests" data-view="interests" aria-label="Interests page">
-    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Beyond the profile</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Off the clock</div></div></div>
-      <h1>Things that move me.</h1><p class="lead">A little about the things I keep coming back to.</p>
-      <div class="list"><div class="tile glass"><span class="tile-icon">⌁</span><span><strong>Mountain state of mind</strong><small>Travel · Quiet places · Coastal roots</small></span></div><div class="tile glass"><span class="tile-icon">↗</span><span><strong>Petrolhead energy</strong><small>Cars · Roads · Precision</small></span></div><div class="tile glass"><span class="tile-icon">♫</span><span><strong>Lost in the frequency</strong><small>Music · Psytrance</small></span></div><div class="tile glass"><span class="tile-icon">▧</span><span><strong>Frame by frame</strong><small>Visuals · Creative experiments</small></span></div></div>
-      <div class="footer">GOOD ENERGY · REAL CONNECTIONS</div>
-    </div>
-  </section>
-
-  <section class="page" id="page-share" data-view="share" aria-label="Share page">
-    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Pass it forward</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Share this contact card</div></div></div>
-      <h1>Stay connected.</h1><p class="lead">Save my details or send this card to someone who should have it.</p>
-      <div class="list"><button class="btn glass primary" id="shareBtn">↗ &nbsp; Share my card <span>↗</span></button><button class="btn glass" id="copyBtn">▣ &nbsp; Copy card link <span>⧉</span></button><button class="btn glass" id="qrBtn">▦ &nbsp; Show QR code <span>＋</span></button><a class="btn glass" href="thejus-tk.vcf" download>＋ &nbsp; Download contact file <span>↓</span></a></div>
-      <div id="qrWrap" style="display:none;text-align:center;margin-top:20px"><div id="qrcode" style="display:inline-block;background:white;padding:12px;border-radius:14px"></div><p class="lead" style="font-size:11px;margin-top:12px">Scan to open this card.</p></div>
-      <div class="footer">YOUR NEXT CONNECTION IS ONE TAP AWAY</div>
-    </div>
-  </section>
-</div>
+  <div class="footer">MADE TO CONNECT · DESIGNED FOR MOBILE</div>
+</main>
+<div class="expanded" id="expanded" aria-hidden="true"><section class="expand-card glass" role="dialog" aria-modal="true" aria-labelledby="expandTitle"><div class="expand-head"><div class="expand-icon" id="expandIcon"></div><div><h2 id="expandTitle">Contact</h2><p id="expandSubtitle">Quick links</p></div><button class="close glass" id="closeExpand" aria-label="Close">×</button></div><div class="content-list" id="expandContent"></div><div class="qr-wrap" id="qrWrap" hidden><div id="qrcode"></div><p>Scan to open this digital card.</p></div></section></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
-const landing=document.getElementById('landing'), pages=[...document.querySelectorAll('.page')], toast=document.getElementById('toast');let toastTimer,activePage=null;
-function haptic(){if('vibrate' in navigator){try{navigator.vibrate(12)}catch(e){}}}
-function notify(message){haptic();toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
-function openPage(name){const next=document.getElementById('page-'+name);if(!next)return;haptic();landing.classList.add('leave');pages.forEach(p=>{p.classList.remove('active','exit');p.scrollTop=0});next.classList.add('active');activePage=name}
-function goHome(){haptic();const current=document.getElementById('page-'+activePage);if(current){current.classList.remove('active');current.classList.add('exit');setTimeout(()=>current.classList.remove('exit'),650)}landing.classList.remove('leave');activePage=null}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
-document.querySelectorAll('.back').forEach(b=>b.addEventListener('click',goHome));
-document.querySelectorAll('.glass').forEach(el=>el.addEventListener('pointerdown',()=>{haptic();el.animate([{filter:'brightness(1)'},{filter:'brightness(1.18)'},{filter:'brightness(1)'}],{duration:260,easing:'ease-out'})},{passive:true}));
+const data={
+ contact:{title:'Contact',subtitle:'Reach out or save my details',icon:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',items:[['＋','Save my contact','thejus-tk.vcf','download'],['◉','WhatsApp','https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card.','external'],['✉','Email me','mailto:thejus.tk@gmail.com'],['⌕','Call me','tel:+919611638650']]},
+ social:{title:'Social',subtitle:'Find me around the web',icon:'◎',items:[['in','LinkedIn','https://www.linkedin.com/in/thejus-tk-34966795?originalSubdomain=in','external'],['◎','Instagram','https://www.instagram.com/inexplicable_psyche/','external'],['✉','Email','mailto:thejus.tk@gmail.com']]},
+ portfolio:{title:'Portfolio',subtitle:'Work, projects and experiments',icon:'⌘',items:[['⌘','Personal portfolio','https://thejustk-byte.github.io','external'],['◈','GitHub projects','https://github.com/thejustk-byte','external'],['in','Professional profile','https://www.linkedin.com/in/thejus-tk-34966795','external']]},
+ interests:{title:'Interests',subtitle:'A few things that keep me curious',icon:'✦',items:[['⌁','Mountain state of mind','Travel · Quiet places · Coastal roots','info'],['↗','Petrolhead energy','Cars · Roads · Precision','info'],['♫','Lost in the frequency','Music · Psytrance','info'],['▧','Frame by frame','Visuals · Creative experiments','info']]},
+ github:{title:'GitHub',subtitle:'Building and experimenting',icon:'⌘',items:[['◈','Open GitHub profile','https://github.com/thejustk-byte','external'],['⌘','Personal portfolio','https://thejustk-byte.github.io','external']]},
+ share:{title:'Share this card',subtitle:'Pass the connection forward',icon:'↗',items:[['↗','Share my card','#share','share'],['▣','Copy card link','#copy','copy'],['▦','Show QR code','#qr','qr'],['＋','Download contact file','thejus-tk.vcf','download']]}
+};
+const overlay=document.getElementById('expanded'),content=document.getElementById('expandContent'),icon=document.getElementById('expandIcon'),title=document.getElementById('expandTitle'),subtitle=document.getElementById('expandSubtitle'),qrWrap=document.getElementById('qrWrap'),toast=document.getElementById('toast');let toastTimer,previousFocus=null;
+function haptic(){if('vibrate'in navigator){try{navigator.vibrate(14)}catch(e){}}}
+function notify(m){haptic();toast.textContent=m;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
+function openBubble(key,button){const d=data[key];if(!d)return;haptic();previousFocus=button;title.textContent=d.title;subtitle.textContent=d.subtitle;icon.innerHTML=d.icon;content.replaceChildren();qrWrap.hidden=true;
+ d.items.forEach(([sym,label,url,kind])=>{if(kind==='info'){const el=document.createElement('div');el.className='action glass';el.innerHTML='<span class="act-icon"></span><span></span>';el.children[0].textContent=sym;el.children[1].textContent=label+' · '+url;content.append(el);return}
+ const el=document.createElement(kind==='share'||kind==='copy'||kind==='qr'?'button':'a');el.className='action glass';el.innerHTML='<span class="act-icon"></span><span></span><span class="arrow">↗</span>';el.children[0].textContent=sym;el.children[1].textContent=label;
+ if(kind==='download'){el.href=url;el.download=''}else if(kind==='external'||!kind){el.href=url;if(kind==='external'){el.target='_blank';el.rel='noopener noreferrer'}}else{el.type='button';el.addEventListener('click',()=>{if(kind==='share')shareCard();if(kind==='copy')copyLink();if(kind==='qr')showQr()})}
+ content.append(el)});
+ overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('closeExpand').focus()}
+function closeBubble(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.style.overflow='';if(previousFocus)previousFocus.focus();haptic()}
+document.querySelectorAll('[data-bubble]').forEach(b=>b.addEventListener('click',()=>openBubble(b.dataset.bubble,b)));
+document.getElementById('closeExpand').addEventListener('click',closeBubble);overlay.addEventListener('click',e=>{if(e.target===overlay)closeBubble()});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeBubble()});
 async function copyLink(){try{await navigator.clipboard.writeText(location.href);notify('Card link copied')}catch(e){const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();notify('Card link copied')}}
-document.getElementById('copyBtn').addEventListener('click',copyLink);
-document.getElementById('shareBtn').addEventListener('click',async()=>{const data={title:'Thejus T.K. — Digital Card',text:'Connect with Thejus T.K.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){if(e.name!=='AbortError')notify('Sharing was not available')}}else copyLink()});
-document.getElementById('qrBtn').addEventListener('click',()=>{const wrap=document.getElementById('qrWrap'),target=document.getElementById('qrcode');wrap.style.display=wrap.style.display==='none'?'block':'none';if(wrap.style.display==='block'&&!target.dataset.ready){if(window.QRCode){new QRCode(target,{text:location.href,width:220,height:220,colorDark:'#08080a',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});target.dataset.ready='1'}else notify('QR generator unavailable. Check your connection')}});
-window.addEventListener('keydown',e=>{if(e.key==='Escape'&&activePage)goHome()});
+async function shareCard(){const d={title:'Thejus T.K. — Digital Card',text:'Connect with Thejus T.K.',url:location.href};if(navigator.share){try{await navigator.share(d)}catch(e){if(e.name!=='AbortError')notify('Sharing was not available')}}else copyLink()}
+function showQr(){qrWrap.hidden=false;const target=document.getElementById('qrcode');if(!target.dataset.ready){if(window.QRCode){new QRCode(target,{text:location.href,width:210,height:210,colorDark:'#08080a',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});target.dataset.ready='1'}else notify('QR generator unavailable. Check your connection')}qrWrap.scrollIntoView({behavior:'smooth',block:'nearest'})}
 </script>
-</body>
-</html>
+</body></html>

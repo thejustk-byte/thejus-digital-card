@@ -1,142 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#080b12">
-  <meta name="description" content="Thejus T.K. — a digital contact card. Save contact details, connect professionally, and explore selected interests.">
-  <meta property="og:title" content="Thejus T.K. | Digital Card">
-  <meta property="og:description" content="YOUR CONTACT, IN ORBIT. Connect with Thejus T.K.">
-  <meta property="og:type" content="website">
-  <title>Thejus T.K. — Digital Card</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
-  <style>
-    :root{color-scheme:dark;--bg:#09090b;--panel:rgba(28,28,31,.52);--line:rgba(255,255,255,.14);--muted:#a5a5ae;--text:#f8f8fa;--cyan:#a7e6ff;--blue:#9ba9ff;--pink:#efa8ff;--mint:#a3f3d3}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-    body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(5,5,8,.4),rgba(5,5,8,.7) 48%,#09090b 100%);pointer-events:none}
-    .bg-video{position:fixed;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.78) contrast(1.05);transform:scale(1.025)}
-    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 26%,rgba(255,255,255,.09),transparent 42%),radial-gradient(ellipse at 12% 60%,rgba(91,135,255,.11),transparent 38%),radial-gradient(ellipse at 88% 72%,rgba(221,106,255,.08),transparent 40%);mix-blend-mode:screen}
-    @keyframes orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes orbitReverse{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}@keyframes breathe{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.035);filter:brightness(1.13)}}@keyframes sheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-    .wrap{width:min(100% - 32px,700px);margin:0 auto;padding:26px 0 44px}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;font:10px "DM Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#c0c0ca}.status{display:flex;align-items:center;gap:8px}.dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
-    .hero{text-align:center;padding:clamp(28px,7.5vh,68px) 10px 27px;animation:rise .8s both}
-    .orbit-scene{position:relative;width:min(70vw,270px);aspect-ratio:1;margin:0 auto 31px;display:grid;place-items:center;isolation:isolate}
-    .orbit-track{position:absolute;inset:3%;border:1px solid rgba(255,255,255,.13);border-radius:50%;animation:orbit 28s linear infinite}.orbit-track:before,.orbit-track:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 0 15px rgba(160,205,255,.85)}.orbit-track:before{width:7px;height:7px;top:8%;left:22%}.orbit-track:after{width:5px;height:5px;bottom:13%;right:16%;background:var(--pink)}
-    .orbit-track.track-two{inset:15%;border-style:dashed;border-color:rgba(255,255,255,.12);animation:orbitReverse 38s linear infinite}.orbit-track.track-three{inset:28%;border-color:rgba(255,255,255,.08);animation:orbit 45s linear infinite}.orbit-track.track-two:before{width:8px;height:8px;top:18%;left:10%;background:var(--cyan)}.orbit-track.track-two:after{width:6px;height:6px;bottom:10%;right:14%;background:var(--mint)}
-    .avatar-wrap{position:relative;width:43%;aspect-ratio:1;padding:2px;border-radius:50%;background:conic-gradient(from 20deg,var(--cyan),rgba(255,255,255,.18),var(--pink),var(--blue),var(--mint),var(--cyan));box-shadow:0 0 50px rgba(153,174,255,.18);animation:breathe 5s ease-in-out infinite}.avatar{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 20%,#414146,#17171b 55%,#080809);border:3px solid rgba(15,15,18,.95);font-size:clamp(27px,7vw,40px);font-weight:800;letter-spacing:-.08em}
-    .orbit-chip{position:absolute;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;font-size:15px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 1px rgba(255,255,255,.22),0 10px 24px rgba(0,0,0,.28)}.chip-one{top:12%;right:8%}.chip-two{bottom:11%;left:7%}.chip-three{top:45%;right:-3%}
-    .eyebrow{font:10px "DM Mono",monospace;letter-spacing:.24em;color:#d0d0d8;text-transform:uppercase}h1{font-size:clamp(37px,8.6vw,61px);line-height:1.04;letter-spacing:-.07em;margin:13px 0 10px;font-weight:700}.subtitle{font-size:14px;color:#d2d2d9;line-height:1.8;margin:0 auto;max-width:420px}.tagline{font-size:11px;color:var(--muted);line-height:1.8;margin:13px auto 0;max-width:390px}
-    .actions{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:24px 0 14px}
-    .btn{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-height:55px;padding:14px 15px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;font-weight:700;letter-spacing:.015em;border:1px solid rgba(255,255,255,.21);background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.045) 46%,rgba(255,255,255,.08));backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:inset 0 1px 1px rgba(255,255,255,.27),inset 0 -1px 1px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.18);transition:transform .22s,border-color .25s,background .25s,box-shadow .25s;cursor:pointer;-webkit-tap-highlight-color:transparent}
-    .btn:before{content:"";position:absolute;z-index:-1;inset:-100% -50%;opacity:.45;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.2) 48%,transparent 60%);background-size:200% 100%;animation:sheen 9s linear infinite;pointer-events:none}.btn:after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;background:linear-gradient(110deg,rgba(102,229,255,.2),rgba(237,155,255,.22),rgba(154,244,208,.18));transition:opacity .22s;z-index:-1}
-    .btn:hover,.btn:focus-visible{transform:translateY(-2px);border-color:rgba(255,255,255,.48);box-shadow:inset 0 1px 1px rgba(255,255,255,.35),0 12px 28px rgba(0,0,0,.3),0 0 20px rgba(146,177,255,.1);outline:none}.btn:hover:after,.btn:focus-visible:after,.btn:active:after{opacity:1}.btn:active{transform:scale(.975);box-shadow:inset 0 2px 9px rgba(0,0,0,.24),0 0 22px rgba(178,144,255,.14)}.btn.primary{grid-column:1/-1;min-height:59px;border-color:rgba(255,255,255,.4);background:linear-gradient(140deg,rgba(255,255,255,.27),rgba(255,255,255,.07) 52%,rgba(255,255,255,.16));box-shadow:inset 0 1px 1px rgba(255,255,255,.38),inset 0 -2px 4px rgba(0,0,0,.25),0 12px 32px rgba(0,0,0,.22)}
-    .ico{width:19px;height:19px;display:inline-grid;place-items:center;color:#f2f2ff;flex:0 0 auto;transition:color .2s,transform .25s}.ico svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.btn:hover .ico{color:var(--cyan);transform:scale(1.08)}
-    .section{margin-top:24px;animation:rise .7s both}.section-head{display:flex;align-items:center;gap:12px;margin:0 2px 12px;color:#c2c2cd;font:10px "DM Mono",monospace;letter-spacing:.2em;text-transform:uppercase}.section-head:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}.link-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .link-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;padding:15px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));backdrop-filter:blur(22px) saturate(145%);-webkit-backdrop-filter:blur(22px) saturate(145%);box-shadow:inset 0 1px 1px rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.12);text-decoration:none;color:var(--text);min-width:0;transition:transform .22s,border-color .22s,background .22s;-webkit-tap-highlight-color:transparent}.link-card:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(102,229,255,.1),transparent 38%,rgba(237,155,255,.09));opacity:0;transition:opacity .25s}.link-card:hover,.link-card:focus-visible{transform:translateY(-2px);border-color:rgba(255,255,255,.32);outline:none}.link-card:hover:after,.link-card:focus-visible:after{opacity:1}
-    .link-card strong{display:block;font-size:13px;position:relative;z-index:1}.link-card small{display:block;color:var(--muted);font-size:10px;margin-top:4px;position:relative;z-index:1}.arrow{margin-left:auto;color:#c8c7d3;font-size:16px;position:relative;z-index:1}
-    .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.interest{min-height:112px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:16px;background:#141416;backdrop-filter:blur(15px);box-shadow:inset 0 1px 1px rgba(255,255,255,.1)}.interest:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,8,.94),rgba(5,5,8,.12)),var(--image) center/cover;opacity:.7;transition:transform .5s}.interest:hover:before{transform:scale(1.06)}.interest span{position:relative;z-index:1;font-size:12px;font-weight:800;letter-spacing:.01em}.interest small{position:relative;z-index:1;display:block;color:#c9c9d2;font-size:10px;margin-top:5px}
-    .bottom{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:25px}.text-btn{border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.055);backdrop-filter:blur(15px);color:#d1d0dc;font:10px "DM Mono",monospace;letter-spacing:.08em;padding:11px 15px;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;-webkit-tap-highlight-color:transparent}.text-btn:hover{color:white;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.12)}.text-btn:active{transform:scale(.97)}
-    .qr-panel{display:none;margin-top:14px;padding:20px;text-align:center;border:1px solid var(--line);border-radius:24px;background:rgba(16,16,19,.84);backdrop-filter:blur(24px)}.qr-panel.open{display:block}#qrcode{display:inline-block;background:white;padding:12px;border-radius:12px;min-height:20px}#qrcode img,#qrcode canvas{display:block;max-width:100%}.qr-note{font-size:11px;color:var(--muted);line-height:1.6;margin:12px 0 0}
-    .foot{text-align:center;color:#83838e;font-size:10px;line-height:1.8;margin-top:30px}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:linear-gradient(135deg,#fafafa,#c5cada);color:#101014;padding:12px 17px;border-radius:999px;font-size:12px;font-weight:800;transition:.25s;z-index:10;max-width:calc(100% - 30px);text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.3)}.toast.show{opacity:1;transform:translate(-50%,0)}
-    @media(min-width:560px){.wrap{padding-top:36px}.link-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:380px){.wrap{width:min(100% - 22px,700px)}.link-card{padding:12px;gap:9px}.link-card small{font-size:9px}.orbit-scene{width:min(72vw,235px)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="Thejus T.K. — a digital contact card.">
+<meta property="og:title" content="Thejus T.K. | Digital Card">
+<meta property="og:description" content="A digital contact card by Thejus T.K.">
+<meta property="og:type" content="website">
+<title>Thejus T.K. — Digital Card</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#08080a;--line:rgba(255,255,255,.15);--muted:#a4a4ae;--text:#fafafd;--cyan:#a7e6ff;--blue:#9ba9ff;--pink:#efa8ff;--mint:#a3f3d3}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,rgba(255,255,255,.075),transparent 34%),radial-gradient(ellipse at 12% 65%,rgba(91,135,255,.11),transparent 38%),radial-gradient(ellipse at 88% 70%,rgba(221,106,255,.09),transparent 40%),linear-gradient(180deg,rgba(5,5,8,.18),rgba(5,5,8,.88))}
+.bg-video{position:fixed;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.06)}
+#app{position:relative;z-index:1;width:100%;height:100%;min-height:100svh;perspective:1600px;overflow:hidden}
+.glass{background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.035) 48%,rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:inset 0 1px 1px rgba(255,255,255,.25),inset 0 -1px 1px rgba(0,0,0,.28),0 12px 34px rgba(0,0,0,.24)}
+.landing{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .4s,transform .6s;transform-origin:left center}
+.landing.leave{opacity:0;transform:rotateY(-22deg) translateX(-10%);pointer-events:none}
+.orbit-scene{position:relative;width:min(88vw,410px);aspect-ratio:1;display:grid;place-items:center;isolation:isolate;animation:appear .9s both}
+@keyframes appear{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinback{to{transform:rotate(-360deg)}}@keyframes pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.045);filter:brightness(1.14)}}@keyframes sheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.ring{position:absolute;inset:2%;border-radius:50%;border:1px solid rgba(255,255,255,.14);animation:spin 32s linear infinite}
+.ring:before,.ring:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 15px rgba(167,230,255,.9)}.ring:before{top:10%;left:23%}.ring:after{right:12%;bottom:19%;background:var(--pink)}
+.ring.r2{inset:13%;border-style:dashed;border-color:rgba(255,255,255,.13);animation:spinback 42s linear infinite}.ring.r3{inset:25%;border-color:rgba(255,255,255,.1);animation:spin 52s linear infinite}
+.core{position:relative;width:34%;aspect-ratio:1;border-radius:50%;padding:3px;background:conic-gradient(var(--cyan),rgba(255,255,255,.14),var(--pink),var(--blue),var(--mint),var(--cyan));box-shadow:0 0 65px rgba(158,174,255,.22);animation:pulse 5s ease-in-out infinite}
+.core-inner{height:100%;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 20%,#45454b,#19191d 58%,#08080a);border:3px solid rgba(12,12,15,.95);font-size:clamp(30px,8vw,48px);font-weight:800;letter-spacing:-.09em}
+.orbit-nav{position:absolute;inset:0;list-style:none;padding:0;margin:0;animation:spinback 32s linear infinite}
+.orbit-nav li{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;transform:rotate(var(--a)) translateY(calc(min(44vw,181px) * -1)) rotate(calc(var(--a) * -1));}
+.orbit-nav li:nth-child(1){--a:0deg}.orbit-nav li:nth-child(2){--a:60deg}.orbit-nav li:nth-child(3){--a:120deg}.orbit-nav li:nth-child(4){--a:180deg}.orbit-nav li:nth-child(5){--a:240deg}.orbit-nav li:nth-child(6){--a:300deg}
+.orbit-nav button{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#f9f9ff;font-size:21px;cursor:pointer;transition:transform .25s,border-color .25s,background .25s;animation:spin 32s linear infinite}
+.orbit-nav button:hover,.orbit-nav button:focus-visible{transform:scale(1.12);border-color:rgba(255,255,255,.65);outline:none;background:linear-gradient(145deg,rgba(167,230,255,.23),rgba(239,168,255,.16))}
+.orbit-nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hint{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:rgba(255,255,255,.35);font:9px "DM Mono",monospace;letter-spacing:.24em;user-select:none}
+.page{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));opacity:0;pointer-events:none;transform:rotateY(90deg);transform-origin:left center;backface-visibility:hidden;transition:transform .65s cubic-bezier(.2,.72,.18,1),opacity .35s;background:linear-gradient(145deg,rgba(14,14,17,.82),rgba(8,8,10,.75));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.page.active{opacity:1;pointer-events:auto;transform:rotateY(0deg)}.page.exit{transform:rotateY(-90deg);opacity:0;transform-origin:right center}
+.page-inner{width:min(100%,540px);margin:0 auto;min-height:100%;display:flex;flex-direction:column}
+.page-head{display:flex;align-items:center;gap:13px;margin-bottom:28px}
+.back{width:45px;height:45px;flex:0 0 auto;border-radius:50%;color:#fff;display:grid;place-items:center;cursor:pointer;font-size:22px}
+.back svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.kicker{font:10px "DM Mono",monospace;letter-spacing:.2em;color:#c5c5d0;text-transform:uppercase}.page h1{font-size:clamp(34px,8vw,52px);line-height:1.04;letter-spacing:-.065em;margin:8px 0 10px}.lead{font-size:13px;line-height:1.8;color:#c3c3ce;margin:0 0 20px}
+.avatar-small{width:76px;height:76px;border-radius:50%;padding:2px;background:conic-gradient(var(--cyan),var(--pink),var(--blue),var(--mint),var(--cyan));margin:0 0 20px}.avatar-small span{height:100%;border-radius:50%;display:grid;place-items:center;background:#17171b;font-weight:800;font-size:25px}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 16px;border-radius:999px;color:var(--text);font-size:12px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .22s,border-color .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent}
+.btn:before{content:"";position:absolute;z-index:-1;inset:-100% -50%;opacity:.45;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.2) 48%,transparent 60%);background-size:200% 100%;animation:sheen 9s linear infinite;pointer-events:none}
+.btn:after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;background:linear-gradient(110deg,rgba(102,229,255,.2),rgba(237,155,255,.22),rgba(154,244,208,.18));transition:opacity .22s;z-index:-1}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);border-color:rgba(255,255,255,.55);outline:none}.btn:hover:after,.btn:focus-visible:after,.btn:active:after{opacity:1}.btn:active{transform:scale(.975)}
+.btn.primary{background:linear-gradient(140deg,rgba(255,255,255,.28),rgba(255,255,255,.07) 52%,rgba(255,255,255,.16));border-color:rgba(255,255,255,.38)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.btn-row .btn{min-width:0}
+.tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{min-height:100px;border-radius:22px;padding:17px;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);transition:transform .22s,border-color .22s;-webkit-tap-highlight-color:transparent}
+.tile:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.42)}.tile-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);font-size:18px;flex:0 0 auto}.tile strong{display:block;font-size:12px}.tile small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.5}
+.list{display:grid;gap:10px}.list .btn{justify-content:flex-start;padding-left:19px}.list .btn span:last-child{margin-left:auto;color:#b9b9c5}
+.footer{margin-top:auto;padding-top:32px;text-align:center;color:#777782;font:9px "DM Mono",monospace;letter-spacing:.08em;line-height:1.8}
+.toast{position:fixed;z-index:10;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:linear-gradient(135deg,#fafafa,#c5cada);color:#101014;padding:12px 17px;border-radius:999px;font-size:12px;font-weight:800;transition:.25s;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:380px){.orbit-scene{width:91vw}.orbit-nav li{width:48px;height:48px;margin:-24px;transform:rotate(var(--a)) translateY(calc(45vw * -1)) rotate(calc(var(--a) * -1))}.orbit-nav button{width:48px;height:48px}.page{padding-left:16px;padding-right:16px}.tile{padding:13px;gap:9px}.tile-icon{width:32px;height:32px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-  <video class="bg-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90" aria-hidden="true"><source src="background.mp4" type="video/mp4"></video>
-  <main class="wrap">
-    <div class="topline"><span>THEJUS T.K.  /  DIGITAL CARD</span><span class="status"><span class="dot"></span> AVAILABLE TO CONNECT</span></div>
-    <header class="hero">
-      <div class="orbit-scene" aria-label="Animated circular contact emblem">
-        <div class="orbit-track"></div><div class="orbit-track track-two"></div><div class="orbit-track track-three"></div>
-        <div class="avatar-wrap"><div class="avatar" aria-label="Thejus initials">TK.</div></div>
-        <span class="orbit-chip chip-one" aria-hidden="true">✳</span><span class="orbit-chip chip-two" aria-hidden="true">✦</span><span class="orbit-chip chip-three" aria-hidden="true">⌁</span>
-      </div>
-      <div class="eyebrow">One scan away</div>
-      <h1>THEJUS T.K.</h1>
-      <p class="subtitle">A little closer, with every connection.</p>
-      <p class="tagline">Operations · Leadership · Process Improvement · Automation</p>
-      <div class="actions">
-        <a class="btn primary" href="thejus-tk.vcf" download>
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M19 8v6m-3-3h6"/></svg></span>
-          SAVE MY CONTACT
-        </a>
-        <a class="btn" href="https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card." target="_blank" rel="noopener noreferrer">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 9c.5 2 2 3.5 4 4l1-1 2 1c-.2 1.4-1.2 2-2.5 1.8-3.3-.6-6-3.3-6.5-6.5C6.8 7 7.5 6 9 6l1 2Z"/></svg></span>
-          WhatsApp
-        </a>
-        <a class="btn" href="mailto:thejus.tk@gmail.com">
-          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-          Email me
-        </a>
-      </div>
-    </header>
-
-    <section class="section" aria-labelledby="connect-heading">
-      <h2 class="section-head" id="connect-heading">YOUR DIGITAL PRESENCE</h2>
-      <div class="link-grid">
-        <a class="link-card" href="https://www.linkedin.com/in/thejus-tk-34966795?originalSubdomain=in" target="_blank" rel="noopener noreferrer">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
-          <span><strong>LinkedIn</strong><small>Professional profile</small></span><span class="arrow">↗</span>
-        </a>
-        <a class="link-card" href="https://www.instagram.com/inexplicable_psyche/" target="_blank" rel="noopener noreferrer">
-          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></span>
-          <span><strong>Instagram</strong><small>Life beyond work</small></span><span class="arrow">↗</span>
-        </a>
-        <a class="link-card" href="https://thejustk-byte.github.io" target="_blank" rel="noopener noreferrer">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span>
-          <span><strong>Portfolio</strong><small>Work & projects</small></span><span class="arrow">↗</span>
-        </a>
-        <a class="link-card" href="thejus-tk.vcf" download>
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg></span>
-          <span><strong>Contact file</strong><small>Download vCard</small></span><span class="arrow">↓</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="interests-heading">
-      <h2 class="section-head" id="interests-heading">BEYOND THE PROFILE</h2>
-      <div class="interests">
-        <div class="interest" style="--image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=85')"><span>Mountain state of mind</span><small>Travel · Quiet places</small></div>
-        <div class="interest" style="--image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=85')"><span>Petrolhead energy</span><small>Cars · Roads · Precision</small></div>
-        <div class="interest" style="--image:url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=85')"><span>Lost in the frequency</span><small>Music · Psytrance</small></div>
-        <div class="interest" style="--image:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=85')"><span>Frame by frame</span><small>Visuals · Creative experiments</small></div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="share-heading">
-      <h2 class="section-head" id="share-heading">SHARE THE FREQUENCY</h2>
-      <div class="actions" style="margin-top:0">
-        <button class="btn" id="shareBtn" type="button"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 9.4 6.6 2.6"/></svg></span>Share my card</button>
-        <button class="btn" id="qrBtn" type="button"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zm4 4h3v3h-3zm0-4h3"/></svg></span>Show my QR</button>
-      </div>
-      <div class="qr-panel" id="qrPanel">
-        <div id="qrcode" aria-label="QR code for this digital card"></div>
-        <p class="qr-note">Scan to open this card. Once published, this QR uses the current page URL. You can save or screenshot it for a physical card.</p>
-        <button class="text-btn" id="copyBtn" type="button">COPY CARD LINK</button>
-      </div>
-    </section>
-
-    <div class="bottom">
-      <button class="text-btn" id="copyLinkBtn" type="button">COPY LINK</button>
-      <a class="text-btn" href="mailto:thejus.tk@gmail.com?subject=Hello%20Thejus">GET IN TOUCH</a>
+<video class="bg-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80" aria-hidden="true"><source src="background.mp4" type="video/mp4"></video>
+<div id="app">
+  <main class="landing" id="landing" aria-label="Contact navigation">
+    <div class="orbit-scene">
+      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="core"><div class="core-inner">TK.</div></div>
+      <ul class="orbit-nav" aria-label="Open a page">
+        <li><button class="glass" data-page="contact" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button></li>
+        <li><button class="glass" data-page="social" aria-label="Social links" title="Social links"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></button></li>
+        <li><button class="glass" data-page="portfolio" aria-label="Portfolio" title="Portfolio"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></button></li>
+        <li><button class="glass" data-page="interests" aria-label="Interests" title="Interests">✦</button></li>
+        <li><button class="glass" data-page="share" aria-label="Share card" title="Share card"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 9.4 6.6 2.6"/></svg></button></li>
+        <li><button class="glass" data-page="contact" aria-label="Save contact" title="Save contact"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M19 8v6m-3-3h6"/></svg></button></li>
+      </ul>
     </div>
-    <footer class="foot">MADE TO CONNECT · DESIGNED FOR MOBILE<br>Privacy note: this page does not set advertising cookies or send visit analytics by default.</footer>
+    <div class="hint" aria-hidden="true"></div>
   </main>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <script>
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    function haptic(){if('vibrate' in navigator){try{navigator.vibrate(12)}catch(e){}}}\n    function notify(message){haptic();toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}\n    document.querySelectorAll('.btn,.link-card,.text-btn').forEach(el=>el.addEventListener('pointerdown',()=>{haptic();const hue=el.matches('.btn')?'rgba(157,202,255,.4)':'rgba(237,155,255,.3)';el.style.setProperty('--touch-glow',hue);el.animate([{filter:'brightness(1)'},{filter:'brightness(1.2)'},{filter:'brightness(1)'}],{duration:280,easing:'ease-out'})},{passive:true}));
-    async function copyCardLink(){try{await navigator.clipboard.writeText(location.href);notify('Card link copied')}catch(e){const el=document.createElement('textarea');el.value=location.href;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();notify('Card link copied')}}
-    document.getElementById('copyBtn').addEventListener('click',copyCardLink);
-    document.getElementById('copyLinkBtn').addEventListener('click',copyCardLink);
-    document.getElementById('shareBtn').addEventListener('click',async()=>{const data={title:'Thejus T.K. — Digital Card',text:'Connect with Thejus T.K.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){if(e.name!=='AbortError')notify('Sharing was not available')}}else copyCardLink()});
-    const panel=document.getElementById('qrPanel');
-    document.getElementById('qrBtn').addEventListener('click',()=>{panel.classList.toggle('open');if(panel.classList.contains('open')){const target=document.getElementById('qrcode');if(!target.dataset.ready){if(window.QRCode){new QRCode(target,{text:location.href,width:220,height:220,colorDark:'#07101d',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});target.dataset.ready='1'}else{target.textContent='QR generator could not load. Check your internet connection.'}}panel.scrollIntoView({behavior:'smooth',block:'nearest'})}});
-  </script>
+
+  <section class="page" id="page-contact" data-view="contact" aria-label="Contact page">
+    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Personal digital card</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Direct contact</div></div></div>
+      <div class="avatar-small"><span>TK.</span></div><div class="kicker">Thejus T.K.</div><h1>Let's connect.</h1><p class="lead">Professional by craft. Curious by nature.</p>
+      <div class="list"><a class="btn glass primary" href="thejus-tk.vcf" download>＋ &nbsp; Save my contact <span>↓</span></a><a class="btn glass" href="https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card." target="_blank" rel="noopener noreferrer">◉ &nbsp; WhatsApp <span>↗</span></a><a class="btn glass" href="mailto:thejus.tk@gmail.com">✉ &nbsp; Email me <span>↗</span></a><a class="btn glass" href="tel:+919611638650">⌕ &nbsp; Call me <span>↗</span></a></div>
+      <div class="footer">MADE TO CONNECT · DESIGNED FOR MOBILE</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-social" data-view="social" aria-label="Social links page">
+    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Find me online</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Social & professional</div></div></div>
+      <h1>My spaces.</h1><p class="lead">A few places to follow the journey.</p>
+      <div class="tile-grid"><a class="tile glass" href="https://www.linkedin.com/in/thejus-tk-34966795?originalSubdomain=in" target="_blank" rel="noopener noreferrer"><span class="tile-icon">in</span><span><strong>LinkedIn</strong><small>Professional profile</small></span></a><a class="tile glass" href="https://www.instagram.com/inexplicable_psyche/" target="_blank" rel="noopener noreferrer"><span class="tile-icon">◎</span><span><strong>Instagram</strong><small>Life beyond work</small></span></a><a class="tile glass" href="https://thejustk-byte.github.io" target="_blank" rel="noopener noreferrer"><span class="tile-icon">⌘</span><span><strong>Portfolio</strong><small>Work & projects</small></span></a><a class="tile glass" href="mailto:thejus.tk@gmail.com"><span class="tile-icon">✉</span><span><strong>Email</strong><small>Start a conversation</small></span></a></div>
+      <div class="footer">ONE PERSON · MANY CURIOSITIES</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-portfolio" data-view="portfolio" aria-label="Portfolio page">
+    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Work & projects</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Explore my digital space</div></div></div>
+      <h1>Built with curiosity.</h1><p class="lead">Operations, process improvement, automation and experiments at the intersection of work and technology.</p>
+      <div class="list"><a class="btn glass primary" href="https://thejustk-byte.github.io" target="_blank" rel="noopener noreferrer">⌘ &nbsp; Open portfolio <span>↗</span></a><a class="btn glass" href="https://github.com/thejustk-byte" target="_blank" rel="noopener noreferrer">◈ &nbsp; GitHub projects <span>↗</span></a><a class="btn glass" href="https://www.linkedin.com/in/thejus-tk-34966795" target="_blank" rel="noopener noreferrer">in &nbsp; Professional profile <span>↗</span></a></div>
+      <div class="footer">PROCESS · PEOPLE · POSSIBILITY</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-interests" data-view="interests" aria-label="Interests page">
+    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Beyond the profile</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Off the clock</div></div></div>
+      <h1>Things that move me.</h1><p class="lead">A little about the things I keep coming back to.</p>
+      <div class="list"><div class="tile glass"><span class="tile-icon">⌁</span><span><strong>Mountain state of mind</strong><small>Travel · Quiet places · Coastal roots</small></span></div><div class="tile glass"><span class="tile-icon">↗</span><span><strong>Petrolhead energy</strong><small>Cars · Roads · Precision</small></span></div><div class="tile glass"><span class="tile-icon">♫</span><span><strong>Lost in the frequency</strong><small>Music · Psytrance</small></span></div><div class="tile glass"><span class="tile-icon">▧</span><span><strong>Frame by frame</strong><small>Visuals · Creative experiments</small></span></div></div>
+      <div class="footer">GOOD ENERGY · REAL CONNECTIONS</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-share" data-view="share" aria-label="Share page">
+    <div class="page-inner"><div class="page-head"><button class="back glass" aria-label="Back to orbit">←</button><div><div class="kicker">Pass it forward</div><div style="color:#aaaab5;font-size:11px;margin-top:5px">Share this contact card</div></div></div>
+      <h1>Stay connected.</h1><p class="lead">Save my details or send this card to someone who should have it.</p>
+      <div class="list"><button class="btn glass primary" id="shareBtn">↗ &nbsp; Share my card <span>↗</span></button><button class="btn glass" id="copyBtn">▣ &nbsp; Copy card link <span>⧉</span></button><button class="btn glass" id="qrBtn">▦ &nbsp; Show QR code <span>＋</span></button><a class="btn glass" href="thejus-tk.vcf" download>＋ &nbsp; Download contact file <span>↓</span></a></div>
+      <div id="qrWrap" style="display:none;text-align:center;margin-top:20px"><div id="qrcode" style="display:inline-block;background:white;padding:12px;border-radius:14px"></div><p class="lead" style="font-size:11px;margin-top:12px">Scan to open this card.</p></div>
+      <div class="footer">YOUR NEXT CONNECTION IS ONE TAP AWAY</div>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+const landing=document.getElementById('landing'), pages=[...document.querySelectorAll('.page')], toast=document.getElementById('toast');let toastTimer,activePage=null;
+function haptic(){if('vibrate' in navigator){try{navigator.vibrate(12)}catch(e){}}}
+function notify(message){haptic();toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
+function openPage(name){const next=document.getElementById('page-'+name);if(!next)return;haptic();landing.classList.add('leave');pages.forEach(p=>{p.classList.remove('active','exit');p.scrollTop=0});next.classList.add('active');activePage=name}
+function goHome(){haptic();const current=document.getElementById('page-'+activePage);if(current){current.classList.remove('active');current.classList.add('exit');setTimeout(()=>current.classList.remove('exit'),650)}landing.classList.remove('leave');activePage=null}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
+document.querySelectorAll('.back').forEach(b=>b.addEventListener('click',goHome));
+document.querySelectorAll('.glass').forEach(el=>el.addEventListener('pointerdown',()=>{haptic();el.animate([{filter:'brightness(1)'},{filter:'brightness(1.18)'},{filter:'brightness(1)'}],{duration:260,easing:'ease-out'})},{passive:true}));
+async function copyLink(){try{await navigator.clipboard.writeText(location.href);notify('Card link copied')}catch(e){const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();notify('Card link copied')}}
+document.getElementById('copyBtn').addEventListener('click',copyLink);
+document.getElementById('shareBtn').addEventListener('click',async()=>{const data={title:'Thejus T.K. — Digital Card',text:'Connect with Thejus T.K.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){if(e.name!=='AbortError')notify('Sharing was not available')}}else copyLink()});
+document.getElementById('qrBtn').addEventListener('click',()=>{const wrap=document.getElementById('qrWrap'),target=document.getElementById('qrcode');wrap.style.display=wrap.style.display==='none'?'block':'none';if(wrap.style.display==='block'&&!target.dataset.ready){if(window.QRCode){new QRCode(target,{text:location.href,width:220,height:220,colorDark:'#08080a',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});target.dataset.ready='1'}else notify('QR generator unavailable. Check your connection')}});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&activePage)goHome()});
+</script>
 </body>
 </html>

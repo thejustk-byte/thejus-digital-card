@@ -185,6 +185,27 @@ h1{grid-column:2;grid-row:1;font-size:clamp(25px,6vw,38px);letter-spacing:-.065e
 @media(max-height:700px){.hero{padding-top:9px;padding-bottom:6px}.orbit-scene{width:54px}.hero{grid-template-columns:58px minmax(0,1fr)}.bubble{height:54svh;min-height:270px}.bubble-grid{padding-top:4px;padding-bottom:4px}.footer{padding-top:3px}.swipe-hint{padding:2px 0}.page-dots{padding-bottom:2px}}
 @media(prefers-reduced-motion:reduce){body:before{animation:none}.bubble,.page-dots button{transition:none!important}}
 
+
+/* Album-art library: every connection is its own animated cover */
+.bubble-grid{max-width:1000px;gap:clamp(13px,3vw,26px);padding-left:max(18px,calc((100% - 430px)/2));padding-right:max(18px,calc((100% - 430px)/2))}
+.bubble{flex-basis:min(72vw,310px);width:min(72vw,310px);height:min(55svh,410px);min-height:285px;padding:clamp(19px,4.5vw,27px);border-radius:32px}
+.bubble .album-open{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:auto;padding-top:13px;border-top:1px solid rgba(255,255,255,.16);font:9px "DM Mono",monospace;letter-spacing:.14em;color:rgba(255,255,255,.76)}
+.bubble .album-open span{display:grid;place-items:center;width:27px;height:27px;border:1px solid rgba(255,255,255,.24);border-radius:50%;font:16px system-ui;background:rgba(255,255,255,.08);transition:transform .45s cubic-bezier(.16,1,.3,1),background .3s}
+.bubble.is-active .album-open span{transform:rotate(-35deg);background:rgba(255,255,255,.16)}
+.bubble[data-direct="https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card."]{background:radial-gradient(ellipse at 80% 15%,rgba(87,224,177,.35),transparent 48%),linear-gradient(145deg,rgba(24,67,60,.94),rgba(7,13,15,.96) 78%)}
+.bubble[data-direct^="mailto"]{background:radial-gradient(ellipse at 75% 15%,rgba(255,170,130,.32),transparent 48%),linear-gradient(145deg,rgba(75,44,51,.93),rgba(10,8,16,.96) 78%)}
+.bubble[data-direct^="tel"]{background:radial-gradient(ellipse at 25% 15%,rgba(255,199,113,.32),transparent 48%),linear-gradient(145deg,rgba(70,52,31,.94),rgba(12,10,15,.96) 78%)}
+.bubble[data-direct^="https://www.linkedin"]{background:radial-gradient(ellipse at 80% 15%,rgba(94,175,255,.4),transparent 48%),linear-gradient(145deg,rgba(27,51,79,.94),rgba(7,9,17,.96) 78%)}
+.bubble[data-direct^="https://www.instagram"]{background:radial-gradient(ellipse at 75% 15%,rgba(246,111,195,.38),transparent 48%),linear-gradient(145deg,rgba(81,38,76,.94),rgba(10,8,18,.96) 78%)}
+.bubble[data-direct^="https://thejustk-byte.github.io"]{background:radial-gradient(ellipse at 25% 15%,rgba(180,143,255,.4),transparent 48%),linear-gradient(145deg,rgba(52,40,83,.94),rgba(8,8,18,.96) 78%)}
+.bubble[data-direct^="https://github.com"]{background:radial-gradient(ellipse at 75% 15%,rgba(184,183,255,.3),transparent 48%),linear-gradient(145deg,rgba(45,45,64,.95),rgba(8,8,16,.96) 78%)}
+.bubble[data-direct^="https://wa.me"] .bubble-icon{color:#b7ffdc}
+.bubble[data-direct^="mailto"] .bubble-icon{color:#ffd0b6}
+.bubble[data-direct^="tel"] .bubble-icon{color:#ffdda0}
+.bubble[data-direct^="https://www.linkedin"] .bubble-icon{color:#a6d5ff}
+.bubble[data-direct^="https://www.instagram"] .bubble-icon{color:#ffb5e9}
+@media(max-width:420px){.bubble{flex-basis:min(79vw,320px);width:min(79vw,320px);height:min(54svh,400px);min-height:275px}.bubble .album-open{font-size:8px}.bubble .album-number{right:19px;top:21px}}
+
 </style>
 </head>
 <body>
@@ -195,28 +216,60 @@ h1{grid-column:2;grid-row:1;font-size:clamp(25px,6vw,38px);letter-spacing:-.065e
     <div class="orbit-scene" aria-label="Animated TK emblem"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"><div class="core-inner"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." class="profile-photo"></div></div></div>
     <h1>THEJUS T.K.</h1><p class="subtitle">Professional by craft. Curious by nature.</p><p class="tagline">OPERATIONS · LEADERSHIP · PROCESS IMPROVEMENT · AUTOMATION</p>
   </header>
-  <section class="bubble-grid" id="albumTrack" aria-label="Swipe between Contact, Social and Work cards">
-    <button class="bubble is-active" data-bubble="contact" data-album="0" aria-label="Open Contact card">
+  <section class="bubble-grid" id="albumTrack" aria-label="Swipe through individual contact links and album art cards">
+    <button class="bubble is-active" data-bubble="contact" data-album="0" aria-label="View Contact">
       <span class="album-kicker">01 / CONNECTION</span><span class="album-number">T.K. — 01</span>
-      <span class="bubble-icon"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." loading="eager" referrerpolicy="no-referrer"></span>
-      <strong>Contact.</strong><small>One tap away.<br>Save my number, call or say hello.</small>
+      <span class="bubble-icon"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." loading="eager" referrerpolicy="no-referrer"></span><strong>Contact.</strong><small>Save my details · Call · Message</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
     </button>
-    <button class="bubble" data-bubble="social" data-album="1" aria-label="Open Social card">
-      <span class="album-kicker">02 / FREQUENCY</span><span class="album-number">T.K. — 02</span>
-      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
-      <strong>Social.</strong><small>Find me beyond this screen.<br>LinkedIn · Instagram · Email.</small>
+    <button class="bubble " data-direct="https://wa.me/919611638650?text=Hi%20Thejus%2C%20we%20connected%20through%20your%20digital%20card." data-album="1" aria-label="Open WhatsApp">
+      <span class="album-kicker">02 / SAY HELLO</span><span class="album-number">T.K. — 02</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.4 2 2.1 3.8 4.2 4.5l1.1-1 2 1c-.2 1.4-1.1 2.2-2.5 2.1-3.6-.4-6.5-3.6-6.5-6.4 0-1.2.8-2 1.7-2.1Z"/></svg></span><strong>WhatsApp.</strong><small>A direct line to start a conversation</small><span class="album-open">OPEN LINK <span aria-hidden="true">↗</span></span>
     </button>
-    <button class="bubble" data-bubble="portfolio" data-album="2" aria-label="Open Work card">
-      <span class="album-kicker">03 / SELECTED WORK</span><span class="album-number">T.K. — 03</span>
-      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span>
-      <strong>Work.</strong><small>Ideas into systems.<br>Portfolio · Projects · GitHub.</small>
+    <button class="bubble " data-direct="mailto:thejus.tk@gmail.com" data-album="2" aria-label="Open Email">
+      <span class="album-kicker">03 / INBOX</span><span class="album-number">T.K. — 03</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><strong>Email.</strong><small>Good conversations start somewhere</small><span class="album-open">OPEN LINK <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="https://www.linkedin.com/in/thejus-tk-34966795?originalSubdomain=in" data-album="3" aria-label="View LinkedIn">
+      <span class="album-kicker">04 / PROFESSIONAL</span><span class="album-number">T.K. — 04</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><strong>LinkedIn.</strong><small>Work, experience and connections</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="https://www.instagram.com/inexplicable_psyche/" data-album="4" aria-label="View Instagram">
+      <span class="album-kicker">05 / OFF THE GRID</span><span class="album-number">T.K. — 05</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></span><strong>Instagram.</strong><small>Visuals, moments and curiosities</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="https://thejustk-byte.github.io" data-album="5" aria-label="View Portfolio">
+      <span class="album-kicker">06 / SELECTED WORK</span><span class="album-number">T.K. — 06</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span><strong>Portfolio.</strong><small>Ideas, systems and experiments</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="https://github.com/thejustk-byte" data-album="6" aria-label="View GitHub">
+      <span class="album-kicker">07 / OPEN SOURCE</span><span class="album-number">T.K. — 07</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.7 1.4a12.8 12.8 0 0 0-6.8 0C6.7 1.1 5.5 1.5 5.5 1.5a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4 8.7c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22"/></svg></span><strong>GitHub.</strong><small>Code, projects and things in progress</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="interests" data-album="7" aria-label="View Interests">
+      <span class="album-kicker">08 / OUTSIDE THE FRAME</span><span class="album-number">T.K. — 08</span>
+      <span class="bubble-icon">undefined</span><strong>Interests.</strong><small>Mountains · Cars · Psytrance</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-direct="tel:+919611638650" data-album="8" aria-label="Open Call me">
+      <span class="album-kicker">09 / VOICE</span><span class="album-number">T.K. — 09</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M6.6 3h3l1.5 4.5-2 1.5a15 15 0 0 0 5.9 5.9l1.5-2 4.5 1.5v3c0 1.1-.9 2-2 2C10 19.4 4.6 14 4.6 5c0-1.1.9-2 2-2Z"/></svg></span><strong>Call me.</strong><small>Skip the form. Let’s talk.</small><span class="album-open">OPEN LINK <span aria-hidden="true">↗</span></span>
+    </button>
+    <button class="bubble " data-bubble="share" data-album="9" aria-label="View Share card">
+      <span class="album-kicker">10 / PASS IT ON</span><span class="album-number">T.K. — 10</span>
+      <span class="bubble-icon">undefined</span><strong>Share card.</strong><small>Link · QR code · Save contact</small><span class="album-open">EXPLORE <span aria-hidden="true">↗</span></span>
     </button>
   </section>
-  <div class="swipe-hint"><span class="hint-line"></span><span>Swipe to explore</span><span class="hint-line"></span></div>
-  <nav class="page-dots" aria-label="Choose card">
-    <button type="button" data-go="0" aria-label="Contact card" aria-current="true"></button>
-    <button type="button" data-go="1" aria-label="Social card" aria-current="false"></button>
-    <button type="button" data-go="2" aria-label="Work card" aria-current="false"></button>
+  <div class="swipe-hint"><span class="hint-line"></span><span>Swipe to explore all 10 cards</span><span class="hint-line"></span></div>
+  <nav class="page-dots" id="albumDots" aria-label="Choose album art card">
+    <button type="button" data-go="0" aria-label="Contact. card" aria-current="true"></button>
+    <button type="button" data-go="1" aria-label="WhatsApp. card" aria-current="false"></button>
+    <button type="button" data-go="2" aria-label="Email. card" aria-current="false"></button>
+    <button type="button" data-go="3" aria-label="LinkedIn. card" aria-current="false"></button>
+    <button type="button" data-go="4" aria-label="Instagram. card" aria-current="false"></button>
+    <button type="button" data-go="5" aria-label="Portfolio. card" aria-current="false"></button>
+    <button type="button" data-go="6" aria-label="GitHub. card" aria-current="false"></button>
+    <button type="button" data-go="7" aria-label="Interests. card" aria-current="false"></button>
+    <button type="button" data-go="8" aria-label="Call me. card" aria-current="false"></button>
+    <button type="button" data-go="9" aria-label="Share card. card" aria-current="false"></button>
   </nav>
   <div class="footer">LIQUID GLASS · BUILT TO CONNECT</div>
 </main>
@@ -271,6 +324,11 @@ window.addEventListener('resize',updateAlbum,{passive:true});
 window.addEventListener('load',()=>{updateAlbum();setTimeout(updateAlbum,250)});
 
 document.querySelectorAll('[data-bubble]').forEach(b=>b.addEventListener('click',()=>openBubble(b.dataset.bubble,b)));
+document.querySelectorAll('[data-direct]').forEach(b=>b.addEventListener('click',()=>{
+ const url=b.dataset.direct;
+ if(url==='#share'){openBubble('share',b);return}
+ if(url.startsWith('https://')||url.startsWith('mailto:')||url.startsWith('tel:')){if(url.startsWith('https://'))window.open(url,'_blank','noopener,noreferrer');else location.href=url}
+}));
 document.getElementById('closeExpand').addEventListener('click',closeBubble);overlay.addEventListener('click',e=>{if(e.target===overlay)closeBubble()});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeBubble()});
 async function copyLink(){try{await navigator.clipboard.writeText(location.href);notify('Card link copied')}catch(e){const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();notify('Card link copied')}}
 async function shareCard(){const d={title:'Thejus T.K. — Digital Card',text:'Connect with Thejus T.K.',url:location.href};if(navigator.share){try{await navigator.share(d)}catch(e){if(e.name!=='AbortError')notify('Sharing was not available')}}else copyLink()}

@@ -129,6 +129,62 @@ h1{grid-column:2;grid-row:1;font-size:clamp(24px,5.9vw,35px);letter-spacing:-.05
 @media(min-width:560px){.wrap{width:min(100% - 40px,640px)}.bubble-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px;gap:15px}.bubble{width:100%;max-width:none}.hero{padding:17px 6px 26px}.orbit-scene{width:82px}}
 @media(max-width:380px){.wrap{width:calc(100% - 22px)}.topline{font-size:7px}.hero{grid-template-columns:69px minmax(0,1fr);column-gap:10px;padding:13px 2px 20px}.orbit-scene{width:65px}.bubble-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:0 2px 14px}.bubble{min-height:133px;padding:13px 11px;border-radius:21px}.bubble[data-bubble="contact"]{min-height:140px;padding:14px;grid-template-columns:48px 1fr;column-gap:10px}.bubble[data-bubble="contact"] .bubble-icon{width:46px;height:46px}.bubble-icon{width:41px;height:41px;font-size:18px}.bubble-icon svg{width:21px;height:21px}.bubble strong{font-size:13px}.bubble small{font-size:8px}.bubble[data-bubble="share"]{min-height:108px}}
 @media(prefers-reduced-motion:reduce){.bubble{transition:none!important}}
+
+/* One-page album-art swipe experience: liquid-glass spatial carousel */
+:root{--album-ink:#08080b;--album-white:#f7f4ff;--album-muted:#aaa5b6;--album-pink:#f16fe0;--album-violet:#8b72ff;--album-blue:#7de4ff}
+html,body{height:100%;min-height:100%;overscroll-behavior:none}
+body{background:#060609;color:var(--album-white);overflow:hidden}
+body:before{z-index:-2;background:radial-gradient(ellipse at 50% 10%,rgba(116,83,173,.28),transparent 47%),radial-gradient(ellipse at 20% 80%,rgba(45,140,170,.13),transparent 35%),radial-gradient(ellipse at 88% 75%,rgba(214,85,190,.14),transparent 34%);animation:ambientShift 18s ease-in-out infinite alternate}
+@keyframes ambientShift{0%{transform:scale(1) translate3d(-1%,0,0);filter:hue-rotate(-8deg)}100%{transform:scale(1.12) translate3d(1%,-1%,0);filter:hue-rotate(12deg)}}
+.bg-video{position:fixed;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;opacity:.33;filter:brightness(.42) saturate(.62) contrast(1.12);transform:scale(1.035)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(3,3,7,.42),rgba(4,4,8,.18) 42%,rgba(3,3,7,.78));}
+.wrap{height:100svh;width:100%;max-width:none;margin:0;padding:calc(15px + env(safe-area-inset-top)) 0 calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;overflow:hidden;position:relative;isolation:isolate}
+.topline{width:min(100% - 36px,560px);margin:0 auto;flex:0 0 auto;font-size:9px;letter-spacing:.12em;color:#e6deef}
+.hero{width:min(100% - 36px,560px);margin:0 auto;padding:clamp(14px,3vh,26px) 0 14px;display:grid;grid-template-columns:76px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:14px;align-items:center;flex:0 0 auto}
+.orbit-scene{grid-column:1;grid-row:1 / span 3;width:70px;margin:0;filter:drop-shadow(0 10px 30px rgba(160,116,255,.22))}
+.core{box-shadow:0 0 26px rgba(178,132,255,.24),0 0 44px rgba(69,206,255,.08)}
+h1{grid-column:2;grid-row:1;font-size:clamp(25px,6vw,38px);letter-spacing:-.065em;line-height:1;margin:0 0 6px}
+.subtitle{grid-column:2;grid-row:2;color:#e2dbea;font-size:12px}
+.tagline{grid-column:2;grid-row:3;margin-top:7px;color:#a9a0b8;font-size:7px;letter-spacing:.1em}
+.bubble-grid{position:relative;isolation:isolate;flex:1 1 auto;min-height:0;width:100%;max-width:610px;margin:0 auto;padding:8px max(18px,calc((100% - 430px)/2)) 12px;display:flex;align-items:center;gap:clamp(14px,3vw,30px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;-webkit-overflow-scrolling:touch;perspective:1200px}
+.bubble-grid::-webkit-scrollbar{display:none}
+.bubble{--tilt:0deg;position:relative;isolation:isolate;overflow:hidden;flex:0 0 min(76vw,350px);width:min(76vw,350px);height:min(58svh,450px);min-height:320px;max-width:none;aspect-ratio:auto;border-radius:34px;padding:clamp(20px,5vw,30px);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;text-align:left;scroll-snap-align:center;scroll-snap-stop:always;color:var(--album-white);cursor:pointer;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(35,31,53,.36) 34%,rgba(8,8,15,.83) 90%);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(30px) saturate(155%);-webkit-backdrop-filter:blur(30px) saturate(155%);box-shadow:inset 0 1.5px 2px rgba(255,255,255,.32),inset 0 -24px 40px rgba(0,0,0,.34),0 26px 55px rgba(0,0,0,.43);transform:translateZ(0) rotateY(var(--tilt)) scale(.92);opacity:.69;filter:saturate(.76);transition:transform .72s cubic-bezier(.16,1,.3,1),opacity .55s ease,filter .65s ease,box-shadow .7s ease,border-color .55s ease;animation:none;-webkit-tap-highlight-color:transparent}
+.bubble:before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;background:radial-gradient(circle at 25% 10%,rgba(255,255,255,.25),transparent 35%),linear-gradient(135deg,rgba(255,255,255,.1),transparent 36%,transparent 64%,rgba(166,121,255,.16));pointer-events:none;animation:none}
+.bubble:after{content:"";position:absolute;left:-20%;right:-20%;bottom:-18%;height:70%;z-index:-1;background:radial-gradient(ellipse,rgba(126,104,255,.33),transparent 68%);filter:blur(18px);opacity:.7;pointer-events:none;border-radius:50%}
+.bubble.is-active{transform:translateZ(24px) rotateY(0deg) scale(1);opacity:1;filter:saturate(1);border-color:rgba(255,255,255,.38);box-shadow:inset 0 1.5px 2px rgba(255,255,255,.34),inset 0 -24px 40px rgba(0,0,0,.3),0 34px 70px rgba(0,0,0,.48),0 0 36px rgba(159,109,255,.1)}
+.bubble:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:3px}
+.bubble-icon{width:58px;height:58px;flex:0 0 auto;border-radius:22px;display:grid;place-items:center;background:radial-gradient(circle at 28% 14%,rgba(255,255,255,.32),rgba(255,255,255,.055) 64%),linear-gradient(140deg,rgba(255,255,255,.12),rgba(15,13,24,.54));border:1px solid rgba(255,255,255,.25);box-shadow:inset 0 2px 4px rgba(255,255,255,.24),0 10px 24px rgba(0,0,0,.26);font-size:25px}
+.bubble-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bubble-icon img{width:100%;height:100%;object-fit:cover;object-position:center 23%;border-radius:21px;display:block}
+.bubble:first-child .bubble-icon{padding:0;overflow:hidden}
+.bubble strong{font-size:clamp(29px,7vw,43px);font-weight:680;letter-spacing:-.07em;line-height:.95;margin-top:auto;max-width:100%}
+.bubble small{font-size:11px;line-height:1.5;color:#ddd6e9;letter-spacing:.02em}
+.bubble .album-kicker{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#c8c0d8}
+.bubble .album-number{position:absolute;right:23px;top:25px;font:10px "DM Mono",monospace;color:rgba(255,255,255,.7);letter-spacing:.12em}
+.bubble[data-bubble="contact"]{background:radial-gradient(ellipse at 25% 20%,rgba(118,203,255,.35),transparent 46%),linear-gradient(145deg,rgba(36,47,70,.91),rgba(8,9,18,.9) 78%)}
+.bubble[data-bubble="social"]{background:radial-gradient(ellipse at 80% 16%,rgba(242,102,217,.34),transparent 48%),linear-gradient(145deg,rgba(58,34,68,.91),rgba(9,8,18,.94) 78%)}
+.bubble[data-bubble="portfolio"]{background:radial-gradient(ellipse at 22% 17%,rgba(177,135,255,.38),transparent 46%),linear-gradient(145deg,rgba(47,38,76,.93),rgba(8,8,18,.95) 80%)}
+.bubble[data-bubble="interests"],.bubble[data-bubble="github"]{background:radial-gradient(ellipse at 80% 18%,rgba(255,169,114,.25),transparent 48%),linear-gradient(145deg,rgba(55,43,53,.94),rgba(8,8,15,.96) 80%)}
+.bubble[data-bubble="share"]{background:radial-gradient(ellipse at 78% 15%,rgba(255,112,228,.4),transparent 48%),linear-gradient(145deg,rgba(109,49,121,.92),rgba(18,9,29,.94) 78%)}
+.bubble[data-bubble="share"] .bubble-icon{background:linear-gradient(145deg,#ef7ce4,#875bff);box-shadow:inset 0 2px 4px rgba(255,255,255,.45),0 0 32px rgba(234,91,224,.2)}
+.bubble[data-bubble="contact"] .bubble-icon{width:74px;height:74px;border-radius:50%;box-shadow:0 0 34px rgba(116,203,255,.23),inset 0 2px 5px rgba(255,255,255,.25)}
+.bubble[data-bubble="contact"] .bubble-icon img{border-radius:50%}
+.footer{flex:0 0 auto;width:min(100% - 36px,560px);margin:0 auto;text-align:center;padding:8px 0 3px;font-size:8px;letter-spacing:.15em;color:#aaa1b9}
+.swipe-hint{display:flex;align-items:center;justify-content:center;gap:10px;color:#c6bdd3;font:9px "DM Mono",monospace;letter-spacing:.14em;text-transform:uppercase;padding:5px 0 6px;flex:0 0 auto}
+.swipe-hint .hint-line{height:1px;width:24px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75))}
+.page-dots{display:flex;justify-content:center;align-items:center;gap:7px;flex:0 0 auto;padding:2px 0 5px}
+.page-dots button{width:5px;height:5px;border:0;border-radius:99px;padding:0;background:rgba(255,255,255,.28);transition:width .5s cubic-bezier(.16,1,.3,1),background .4s}
+.page-dots button[aria-current="true"]{width:23px;background:linear-gradient(90deg,var(--album-blue),var(--album-pink));box-shadow:0 0 12px rgba(191,125,255,.4)}
+/* Expanded panels retain the same glass language */
+.expanded{z-index:50;background:rgba(3,3,8,.65);backdrop-filter:blur(25px) saturate(135%);-webkit-backdrop-filter:blur(25px) saturate(135%)}
+.expand-card{background:linear-gradient(145deg,rgba(47,42,66,.96),rgba(7,7,13,.97));border:1px solid rgba(255,255,255,.24);box-shadow:inset 0 1px 2px rgba(255,255,255,.2),0 30px 100px rgba(0,0,0,.65)}
+.action{background:linear-gradient(140deg,rgba(255,255,255,.12),rgba(255,255,255,.025));border-color:rgba(255,255,255,.14)}
+.action:hover{background:linear-gradient(120deg,rgba(133,113,255,.19),rgba(239,111,224,.12))}
+@media(min-width:700px){.bubble{flex-basis:310px;width:310px;height:min(58svh,450px)}.bubble-grid{gap:25px}.hero{padding-top:22px}.orbit-scene{width:76px}}
+@media(max-width:420px){.topline{font-size:7px;width:calc(100% - 28px)}.hero{width:calc(100% - 28px);grid-template-columns:60px minmax(0,1fr);column-gap:12px;padding:clamp(9px,2.6vh,20px) 0 10px}.orbit-scene{width:56px}.tagline{font-size:6.5px;letter-spacing:.055em}.bubble-grid{padding:5px max(12px,calc((100% - 320px)/2)) 8px;gap:13px}.bubble{flex-basis:min(79vw,320px);width:min(79vw,320px);height:min(56svh,420px);min-height:300px;padding:22px;border-radius:29px}.bubble strong{font-size:clamp(32px,9vw,40px)}.bubble-icon{width:52px;height:52px;border-radius:19px}.bubble[data-bubble="contact"] .bubble-icon{width:66px;height:66px}.footer{font-size:7px}.swipe-hint{font-size:8px}}
+@media(max-height:700px){.hero{padding-top:9px;padding-bottom:6px}.orbit-scene{width:54px}.hero{grid-template-columns:58px minmax(0,1fr)}.bubble{height:54svh;min-height:270px}.bubble-grid{padding-top:4px;padding-bottom:4px}.footer{padding-top:3px}.swipe-hint{padding:2px 0}.page-dots{padding-bottom:2px}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none}.bubble,.page-dots button{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -139,15 +195,30 @@ h1{grid-column:2;grid-row:1;font-size:clamp(24px,5.9vw,35px);letter-spacing:-.05
     <div class="orbit-scene" aria-label="Animated TK emblem"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"><div class="core-inner"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." class="profile-photo"></div></div></div>
     <h1>THEJUS T.K.</h1><p class="subtitle">Professional by craft. Curious by nature.</p><p class="tagline">OPERATIONS · LEADERSHIP · PROCESS IMPROVEMENT · AUTOMATION</p>
   </header>
-  <section class="bubble-grid" aria-label="Contact and profile shortcuts">
-    <button class="bubble" data-bubble="contact"><span class="bubble-icon"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." loading="eager" referrerpolicy="no-referrer"></span><strong>Contact</strong><small>Save · Call · Message</small></button>
-    <button class="bubble" data-bubble="social"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><strong>Social</strong><small>LinkedIn · Instagram</small></button>
-    <button class="bubble" data-bubble="portfolio"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span><strong>Portfolio</strong><small>Work · Projects</small></button>
-    <button class="bubble" data-bubble="interests"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 2.8 14.7 9l6.5.5-4.9 4.3 1.5 6.3-5.6-3.4-5.6 3.4 1.5-6.3-4.9-4.3L9.7 9 12 2.8Z"/></svg></span><strong>Interests</strong><small>Mountains · Cars · Music</small></button>
-    <button class="bubble" data-bubble="share"><span class="bubble-icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 9.4 6.6 2.6"/></svg></span><strong>Share</strong><small>Link · QR code</small></button>
-    <button class="bubble" data-bubble="github"><span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.7 1.4a12.8 12.8 0 0 0-6.8 0C6.7 1.1 5.5 1.5 5.5 1.5a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4 8.7c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22"/></svg></span><strong>GitHub</strong><small>Code · Experiments</small></button>
+  <section class="bubble-grid" id="albumTrack" aria-label="Swipe between Contact, Social and Work cards">
+    <button class="bubble is-active" data-bubble="contact" data-album="0" aria-label="Open Contact card">
+      <span class="album-kicker">01 / CONNECTION</span><span class="album-number">T.K. — 01</span>
+      <span class="bubble-icon"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KwHOVnuYOkW2oN0MTIORaA0VtB/89e27f58-d9ba-4501-947b-2d7f20046376.jpg" alt="Thejus T.K." loading="eager" referrerpolicy="no-referrer"></span>
+      <strong>Contact.</strong><small>One tap away.<br>Save my number, call or say hello.</small>
+    </button>
+    <button class="bubble" data-bubble="social" data-album="1" aria-label="Open Social card">
+      <span class="album-kicker">02 / FREQUENCY</span><span class="album-number">T.K. — 02</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+      <strong>Social.</strong><small>Find me beyond this screen.<br>LinkedIn · Instagram · Email.</small>
+    </button>
+    <button class="bubble" data-bubble="portfolio" data-album="2" aria-label="Open Work card">
+      <span class="album-kicker">03 / SELECTED WORK</span><span class="album-number">T.K. — 03</span>
+      <span class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5M2.5 16 12 21l9.5-5"/></svg></span>
+      <strong>Work.</strong><small>Ideas into systems.<br>Portfolio · Projects · GitHub.</small>
+    </button>
   </section>
-  <div class="footer">MADE TO CONNECT · DESIGNED FOR MOBILE</div>
+  <div class="swipe-hint"><span class="hint-line"></span><span>Swipe to explore</span><span class="hint-line"></span></div>
+  <nav class="page-dots" aria-label="Choose card">
+    <button type="button" data-go="0" aria-label="Contact card" aria-current="true"></button>
+    <button type="button" data-go="1" aria-label="Social card" aria-current="false"></button>
+    <button type="button" data-go="2" aria-label="Work card" aria-current="false"></button>
+  </nav>
+  <div class="footer">LIQUID GLASS · BUILT TO CONNECT</div>
 </main>
 <div class="expanded" id="expanded" aria-hidden="true"><section class="expand-card glass" role="dialog" aria-modal="true" aria-labelledby="expandTitle"><div class="expand-head"><div class="expand-icon" id="expandIcon"></div><div><h2 id="expandTitle">Contact</h2><p id="expandSubtitle">Quick links</p></div><button class="close glass" id="closeExpand" aria-label="Close">×</button></div><div class="content-list" id="expandContent"></div><div class="qr-wrap" id="qrWrap" hidden><div id="qrcode"></div><p>Scan to open this digital card.</p></div></section></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -171,6 +242,34 @@ function openBubble(key,button){const d=data[key];if(!d)return;haptic();previous
  content.append(el)});
  overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('closeExpand').focus()}
 function closeBubble(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.style.overflow='';if(previousFocus)previousFocus.focus();haptic()}
+
+// Album-art style horizontal swipe navigation with depth-aware cards.
+const albumTrack=document.getElementById('albumTrack');
+const albumCards=[...albumTrack.querySelectorAll('[data-album]')];
+const albumDots=[...document.querySelectorAll('[data-go]')];
+let albumScrollFrame=0;
+function updateAlbum(){
+ if(!albumTrack)return;
+ const center=albumTrack.scrollLeft+albumTrack.clientWidth/2;
+ let selected=0,closest=Infinity;
+ albumCards.forEach((card,i)=>{
+  const cardCenter=card.offsetLeft+card.offsetWidth/2;
+  const delta=cardCenter-center,dist=Math.abs(delta);
+  if(dist<closest){closest=dist;selected=i}
+  const amount=Math.max(-1,Math.min(1,delta/(albumTrack.clientWidth*.68)));
+  card.style.setProperty('--tilt',(amount*9).toFixed(2)+'deg');
+  card.classList.toggle('is-active',dist<card.offsetWidth*.48);
+  card.setAttribute('aria-current',dist<card.offsetWidth*.48?'true':'false');
+ });
+ albumDots.forEach((dot,i)=>dot.setAttribute('aria-current',i===selected?'true':'false'));
+}
+albumTrack.addEventListener('scroll',()=>{if(albumScrollFrame)return;albumScrollFrame=requestAnimationFrame(()=>{updateAlbum();albumScrollFrame=0})},{passive:true});
+albumDots.forEach(dot=>dot.addEventListener('click',()=>{const card=albumCards[Number(dot.dataset.go)];if(card)albumTrack.scrollTo({left:card.offsetLeft-(albumTrack.clientWidth-card.offsetWidth)/2,behavior:'smooth'})}));
+let albumTouchStart=null;
+albumTrack.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const active=albumCards.findIndex(c=>c.classList.contains('is-active'));const next=Math.max(0,Math.min(albumCards.length-1,active+(e.key==='ArrowRight'?1:-1)));albumDots[next]?.click()}});
+window.addEventListener('resize',updateAlbum,{passive:true});
+window.addEventListener('load',()=>{updateAlbum();setTimeout(updateAlbum,250)});
+
 document.querySelectorAll('[data-bubble]').forEach(b=>b.addEventListener('click',()=>openBubble(b.dataset.bubble,b)));
 document.getElementById('closeExpand').addEventListener('click',closeBubble);overlay.addEventListener('click',e=>{if(e.target===overlay)closeBubble()});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeBubble()});
 async function copyLink(){try{await navigator.clipboard.writeText(location.href);notify('Card link copied')}catch(e){const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();notify('Card link copied')}}
